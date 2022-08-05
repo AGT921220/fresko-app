@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">Atrás</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+    <div class="header" style="text-align: center;">
+      <ion-img src="assets/header_logo.png" style="width: 55%;margin-left:22%"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+    </div>
+
+    <div class="body" style="text-align: center;height: 45vh;background-color: #00a82d;border-radius: 30px;">
+      <ion-img src="../assets/close_nocobertura.png" style="width: 25%;margin-left: 38%;text-align: center;"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+      <div style="text-align: center !important;margin-top:3%">
+        <span style="color: white;font-weight: 500;font-size: 22px;width: 100%;display: block;">NO TENEMOS</span>
+        <span style="color: white;font-weight: 500;font-size: 22px;width: 100%;display: block;">COBERTURA EN </span>
+        <span style="color: white;font-weight: 500;font-size: 22px;width: 100%;display: block;">TU ZONA.</span>
+      </div>
+      <div style="text-align: center !important;margin-top:3%">
+        <span style="color: white;font-size: 14px;width: 100%;display: block;font-weight: 400;">DEJANOS TUS DATOS Y</span>
+        <span style="color: white;font-size: 14px;width: 100%;display: block;font-weight: 400;">TE AVISAREMOS CUANDO</span>
+        <span style="color: white;font-size: 14px;width: 100%;display: block;font-weight: 400;">LLEGUEMOS CONTIGO</span>
+      </div>
+    </div>
+    <div class="body-input" style="margin-left:10%;margin-right:10%;margin-top:10%">
+      <ion-input required style="border-bottom: 4px solid black;" type="tel" inputmode="telephone" maxlength="5"
+        [(ngModel)]="codigo_postal" minlength="5" name="telephone" placeholder="Codigo Postal">
+      </ion-input>
+      <ion-input required style="border-bottom: 4px solid black;" inputmode="email" name="email" placeholder="Correo"
+        [(ngModel)]="correo">
+      </ion-input>
+    </div>
+    <div class="body-button" style="text-align: center;margin-top:3%">
+      <button type="button" class="buscar-btn" style="width: 26vh;" (click)="enviarSolicitud()">ENVIAR</button>
+    </div>
+
+  </div>
+</ion-content>

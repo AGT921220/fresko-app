@@ -1,0 +1,82 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-row style="width:100% !important">
+      <ion-col size="4" style="float: left;">
+        <ion-img src="assets/zanahoria.png" class="img_header ion-margin-top ion-padding-top"
+          style="padding-top: 0px;margin-top: 0px;width: 13.2%;float: left;">
+        </ion-img>
+      </ion-col>
+      <ion-col size="4">
+        <div class="first">
+          <ion-img src="assets/mercasa.png"
+            style="padding-left: 0px !important;margin-left: 0px !important;padding-top: 0px !important;margin-top: 10% !important;"
+            class="img_header ion-margin-top ion-padding-top">
+          </ion-img>
+        </div>
+      </ion-col>
+      <ion-col size="4" style="float: right;">
+        <ion-img src="assets/cart_logo.png" class="img_header ion-margin-top ion-padding-top"
+          style="padding-top: 0px;margin-top: 0px;width: 35%;float: right;" (click)="finishOrder()">
+        </ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+
+
+</ion-header>
+
+
+<ion-content>
+
+
+  <div
+    *ngIf="this.global.user_info.promotions_discount.length >= 1 || this.global.user_info.promotions_freedelivery.length >= 1" style="padding-bottom:2%">
+    <div *ngFor="let item of this.global.user_info.promotions_discount">
+      <ion-row *ngIf="item.url != null">
+        <ion-col size="1"></ion-col>
+        <ion-col size="10">
+          <ion-img src="{{item.url}}"
+            style="padding-top: 0px;margin-top: 0px;"></ion-img>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+    </div>
+    <div *ngFor="let item of this.global.user_info.promotions_freedelivery" style="padding-top:2%">
+      <ion-row *ngIf="item.url != null">
+        <ion-col size="1"></ion-col>
+        <ion-col size="10">
+          <ion-img src="{{item.url}}"
+            style="padding-top: 0px;margin-top: 0px;"></ion-img>
+        </ion-col>
+        <ion-col size="1"></ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div
+    *ngIf="this.global.user_info.promotions_discount.length == 0 && this.global.user_info.promotions_freedelivery.length == 0"
+    style="text-align: center !important;">
+    <h4>No tienes promociones disponibles.</h4>
+  </div>
+
+
+  <div class="buttons-body" style="text-align: center;">
+    <ion-row>
+      <ion-col size="12">
+        <div class="body-button" style="text-align: center;margin-top:3%">
+          <button type="button" class="buscar-btn" style="width: 28vh;" (click)="confirmar()">CONFIRMAR</button>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <div class="body-button" style="text-align: center;margin-top:2%">
+          <button type="button" class="buscar-btn" style="width: 28vh;" (click)="back()">REGRESAR</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+
+</ion-content>

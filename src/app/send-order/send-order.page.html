@@ -1,0 +1,150 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">VOLVER</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+
+  <div class="body-button" style="text-align: center;margin-top:7%">
+    <ion-img src="assets/mi_carrito.png" (click)="carrito()"
+      style="width:20vh;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+  </div>
+  <div class="totales" style="margin-top:3%">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1"></ion-col>
+        <ion-col size="8">
+          <span style="color:black;font-weight: bold;">Subtotal de la compra: </span>
+        </ion-col>
+        <ion-col size="3">
+          <span style="color:black;font-weight: bold;">{{subtotal | currency}}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="promo_seleccionada == null || promo_seleccionada?.tipo != 'ENVIO'">
+        <ion-col size="1"></ion-col>
+        <ion-col size="8">
+          <span style="color:black;font-weight: bold;">Tarifa de entrega: </span>
+        </ion-col>
+        <ion-col size="3">
+          <span style="color:black;font-weight: bold;">{{costo_envio | currency }}</span>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="promo_seleccionada != null && promo_seleccionada.tipo == 'ENVIO'">
+        <ion-col size="1"></ion-col>
+        <ion-col size="8">
+          <span style="color:black;font-weight: bold;text-decoration-line: line-through;">Tarifa de entrega: </span>
+        </ion-col>
+        <ion-col size="3">
+          <span style="color:black;font-weight: bold;">$0.00</span>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="promo_seleccionada != null && promo_seleccionada.tipo == 'DESCUENTO'">
+        <ion-col size="1"></ion-col>
+        <ion-col size="8">
+          <span style="color:black;font-weight: bold;">Descuento: </span>
+        </ion-col>
+        <ion-col size="3">
+          <span style="color:black;font-weight: bold;">{{ promo_seleccionada.descuento_otorgado | currency }}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+  <div>
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <textarea [(ngModel)]="pickUpNotes" placeholder="AGREGA AQUI TUS COMENTARIOS SOBRE TU PEDIDO" rows="6"
+          style="text-align:center;border: 2px solid #dbdbdb;border-radius: 18px;width: 100% !important;height: 100% !important;background-color: #dbdbdb;color: black;font-weight: 300;">
+        </textarea>
+      </ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+  </div>
+
+
+  <div *ngIf="promotions_available.length >= 1" style="margin-top:3%">
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <hr style="background-color:#ec760a;height:2px;" />
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of promotions_available; let i = index">
+      <ion-col size="1"></ion-col>
+      <ion-col size="11" *ngIf="item.permitida">
+        <ion-row>
+          <ion-col size="10">
+            <span style="font-weight: bold;font-size: 15px;">{{item.description}}
+            </span>
+          </ion-col>
+          <ion-col size="2">
+            <ion-checkbox (click)="updatePromoSeleccionada(item, i)" [checked]="item.seleccionada"></ion-checkbox>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="11" *ngIf="!item.permitida">
+        <ion-row>
+          <ion-col size="10" *ngIf="item.tipo == 'DESCUENTO'">
+            <span style="text-decoration-line: line-through;font-weight: bold;font-size: 15px;">{{item.description}}
+            </span><br />
+            <span style="font-style: italic;font-size:13px;">Necesitas {{item.diferencia | currency }} en tu carrito
+              para poder seleccionar esta promocion.
+            </span>
+          </ion-col>
+          <ion-col size="10" *ngIf="item.tipo != 'DESCUENTO'">
+            <span style="text-decoration-line: line-through;font-weight: bold;font-size: 15px;">{{item.description}}
+            </span>
+          </ion-col>
+          <ion-col size="2">
+            <ion-checkbox disabled></ion-checkbox>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="1"></ion-col>
+      <ion-col size="10">
+        <hr style="background-color:#ec760a;height:2px;" />
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="total">
+    <ion-row>
+      <ion-col size="3"></ion-col>
+      <ion-col size="6" style="text-align: center;">
+        <span style="color:black;font-weight: bold;font-size: 17px;color:#ec760a">Total Aproximado: {{total | currency }}</span>
+      </ion-col>
+      <ion-col size="3">
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="body-button" style="text-align: center;margin-top:5%;margin-bottom:4%">
+    <ion-row>
+      <ion-col size="3"></ion-col>
+      <ion-col size="6" style="text-align: center;">
+        <button type="button" class="buscar-btn" style="width: 100%" (click)="elegirHorario()">PAGAR</button>
+      </ion-col>
+      <ion-col size="3"></ion-col>
+    </ion-row>
+  </div>
+</ion-content>

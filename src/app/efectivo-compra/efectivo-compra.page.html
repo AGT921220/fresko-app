@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">Atrás</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-row style="margin-top: 20%;">
+    <ion-col size="2">
+    </ion-col>
+    <ion-col size="8">
+      <ion-img src="assets/pago_efectivo.png"
+      style="padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+
+  <div class="body-button" style="text-align: center;margin-top:10%">
+    <button type="button" class="buscar-btn" style="width: 28vh;font-weight: bold;"
+      (click)="finalizar()">ENVIAR PEDIDO</button>
+</div>
+
+
+</ion-content>

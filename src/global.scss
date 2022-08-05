@@ -1,0 +1,94 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+.swiper-pagination {
+    position: relative;
+    padding-top: 10px;
+}
+
+span.swiper-pagination-bullet {
+    background: black !important;
+    opacity: 1 !important;
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #26a83d !important;
+    opacity: 1;
+}
+
+ion-tab-bar, ion-tab-button{
+    background-color: #ec760a;
+   }
+   
+input.native-input {
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+ }
+ ion-navbar.toolbar.toolbar-ios.statusbar-padding,
+ ion-navbar.toolbar-ios ion-title.title-ios,
+ ion-toolbar.toolbar.toolbar-ios.statusbar-padding,
+ ion-toolbar.toolbar-ios ion-title.title-ios {
+   padding-top: constant(safe-area-inset-top);
+   padding-top: env(safe-area-inset-top);
+ }
+
+ .custom-bag {
+     content: url("assets/carrito.png");
+  }
+
+  .custom-cart {
+    content: url("assets/carrito_tab.png");
+ }
+ .custom-help {
+    content: url("assets/ayuda_tab.png");
+ }
+ .custom-pagar {
+    content: url("assets/pagar_tab.png");
+ }
+ .custom-atras {
+    content: url("assets/atras_tab.png");
+ }
+
+ ion-tab-bar {
+   height: 6.9vh;
+ }
+
+ .cupertino-bottom-modal-black {
+   --height:60% !important;
+   align-items: flex-end !important;
+   background-color: #ffffffc7 !important;
+   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px !important;
+ }
+ 
+ 
+.cupertino-bottom-modal-white .modal-wrapper.sc-ion-modal-ios {
+   border-radius: 20px 20px 0px 0px !important;
+ }
+ 
+ .cupertino-bottom-modal-black .modal-wrapper.sc-ion-modal-ios {
+   border-radius: 20px 20px 0px 0px !important;
+ }
+ 

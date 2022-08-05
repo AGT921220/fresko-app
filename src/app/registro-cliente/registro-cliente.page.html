@@ -1,0 +1,83 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">VOLVER A INICIO</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+
+
+
+<ion-content>
+  <div class="campos" style="margin-left:10%;text-align: left;font-size: 14px;color: #21ac38;margin-top:8%">
+    <span style="font-weight: bold;">REGISTRO</span>
+  </div>
+  <div class="body-input" style="margin-left:10%;margin-right:10%;margin-top:3%">
+    <ion-label position="stacked" style="font-weight: bold;">Nombre Completo <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.nombre_completo">
+    </ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Celular <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" type="tel" inputmode="telephone"
+      [(ngModel)]="cliente.celular">
+    </ion-input>
+    <ion-row>
+      <ion-col size="6" style="padding-left:0px">
+        <ion-label position="stacked" style="font-weight: bold;">Calle <span
+            style="color:#21ac38;padding-left:5px">*</span></ion-label>
+        <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.calle">
+        </ion-input>
+      </ion-col>
+      <ion-col size="6" style="padding-left:0px">
+        <ion-label position="stacked" style="font-weight: bold;">Numero <span
+            style="color:#21ac38;padding-left:5px">*</span></ion-label>
+        <ion-input required style="border-bottom: 4px solid black;" type="tel" [(ngModel)]="cliente.numero">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-label position="stacked" style="font-weight: bold;">Cruces</ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.cruces"></ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Colonia <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.colonia"></ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Municipio <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.municipio"></ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Estado <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.estado"></ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Correo <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" [(ngModel)]="cliente.correo"></ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Contraseña <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" type="password" [(ngModel)]="cliente.password">
+    </ion-input>
+    <ion-label position="stacked" style="font-weight: bold;">Confirmar Contraseña <span
+        style="color:#21ac38;padding-left:5px">*</span></ion-label>
+    <ion-input required style="border-bottom: 4px solid black;" type="password"
+      [(ngModel)]="cliente.confirmar_password"></ion-input>
+    <div class="campos" style="padding-top: 5%;text-align: right;font-size: 11px;color: #21ac38;">
+      <span> * Campos obligatorios</span>
+    </div>
+  </div>
+  <div class="body-button" style="text-align: center;margin-top:5%;margin-bottom:6%">
+    <button type="button" class="buscar-btn" style="width: 23vh;" (click)="enviarSolicitud()">ENVIAR</button>
+  </div>
+
+</ion-content>

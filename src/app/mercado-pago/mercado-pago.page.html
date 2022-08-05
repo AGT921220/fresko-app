@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">Atrás</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+
+
+  <form id="form-checkout">
+    <input type="text" name="cardNumber" id="form-checkout__cardNumber" />
+    <input type="text" name="cardExpirationMonth" id="form-checkout__cardExpirationMonth" />
+    <input type="text" name="cardExpirationYear" id="form-checkout__cardExpirationYear" />
+    <input type="text" name="cardholderName" id="form-checkout__cardholderName" />
+    <input type="email" name="cardholderEmail" id="form-checkout__cardholderEmail" />
+    <input type="text" name="securityCode" id="form-checkout__securityCode" />
+    <select name="issuer" id="form-checkout__issuer"></select>
+    <select name="identificationType" id="form-checkout__identificationType"></select>
+    <input type="text" name="identificationNumber" id="form-checkout__identificationNumber" />
+    <select name="installments" id="form-checkout__installments"></select>
+    <button type="submit" id="form-checkout__submit">Pay</button>
+
+    <progress value="0" class="progress-bar">loading...</progress>
+  </form>

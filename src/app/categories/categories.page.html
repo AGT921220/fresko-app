@@ -1,0 +1,119 @@
+<ion-content>
+  <ion-item class="header ion-text-center" style="padding-top:8%">
+    <div class="first">
+      <ion-img src="assets/header_mercasa.png"
+        style="width: 55%;padding-left: 0px !important;margin-left: 0px !important;padding-top: 0px !important;margin-top: 0px !important;"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+    </div>
+    <div class="second">
+      <ion-img src="assets/cart_logo.png" class="img_header ion-margin-top ion-padding-top"
+        style="padding-top: 0px;margin-top: 0px;width: 70%;float: right;" (click)="shoppingList()">
+      </ion-img>
+    </div>
+
+  </ion-item>
+  <div class="promociones" style="display:block;" *ngIf="this.global.esInvitado == true">
+    <ion-row>
+      <ion-col size="12">
+        <div class="button-invitado" style="height: 80px;background-color: #f29e24;border-radius: 20px;text-align: center;">
+          <p style="font-weight: bold;color:white;padding-top:8%;font-size:22px">Sesion Invitado</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-img src="assets/invitado.png" class="img_header ion-margin-top ion-padding-top" style="padding-top: 0px;margin-top: 0px;">
+        </ion-img>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="promociones" style="display: block;" *ngIf="this.global.esInvitado == false && this.global.user_info != null">
+    <!-- <ion-row
+      *ngIf="this.global.user_info.promotions_discount.length >= 1 || this.global.user_info.promotions_freedelivery.length >= 1 || this.global.user_info.promotions_freeproduct.length >= 1">
+      <ion-col size="12">
+        <h4 style="font-size: 17px;font-weight: 490;">PROMOCIONES DISPONIBLES</h4>
+      </ion-col>
+    </ion-row> -->
+    <ion-row *ngIf="this.global.esInvitado == false && this.global.user_info">
+      <ion-col size="6">
+        <ion-img src="assets/promociones.png" class="img_header ion-margin-top ion-padding-top"
+          (click)="verPromosDisponibles()" style="padding-top: 0px;margin-top: 0px;">
+        </ion-img>
+      </ion-col>
+      <ion-col size="6">
+        <ion-img src="assets/paquetes.png" class="img_header ion-margin-top ion-padding-top"
+          style="padding-top: 0px;margin-top: 0px;" (click)="verPaquetesDisponibles()">
+        </ion-img>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="slider-promos" style="margin-top:3.4%" *ngIf="this.global.esInvitado == false && this.global.user_info != null && this.global.user_info.anuncios.length >= 1">
+    <ion-slides #slides class="slide-padding" [options]="sliderOptions" style="height:100% !important;" pager="true">
+      <ion-slide *ngFor="let item of this.global.user_info.anuncios">
+
+        <img src="{{item.imagen}}"
+          style="max-width: 300px !important;max-height: 300px !important;object-fit: contain !important;" />
+
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="categorias" style="margin-left:2%;margin-right:2%;">
+    <!-- <ion-row>
+      <ion-col size="12">
+        <h4 style="font-size: 17px;font-weight: 490;">CATEGORIAS</h4>
+      </ion-col>
+    </ion-row> -->
+    <ion-row>
+      <ion-col size="4" style="margin-bottom: 2.1%;">
+        <ion-img src="assets/frutas_new.png" (click)="verProductos(0)"
+          style="padding-top: 0px;margin-top: 0px;width:90%">
+        </ion-img>
+      </ion-col>
+      <ion-col size="4" style="margin-bottom: 2.1%;">
+        <ion-img src="assets/verduras_new.png" (click)="verProductos(1)"
+          style="padding-top: 0px;margin-top: 0px;width:90%">
+        </ion-img>
+      </ion-col>
+      <ion-col size="4" style="margin-bottom: 2.1%;">
+        <ion-img src="assets/cremeria_new.png" (click)="verProductos(4)"
+          style="padding-top: 0px;margin-top: 0px;width:90%">
+        </ion-img> <!-- CUAL ID? -->
+      </ion-col>
+
+      <ion-col size="4" style="margin-bottom: 2.1%;">
+        <ion-img src="assets/carnes_new.png" (click)="verProductos(3)"
+          style="padding-top: 0px;margin-top: 0px;width:90%">
+        </ion-img> <!-- CUAL ID? -->
+      </ion-col>
+      <ion-col size="4" style="margin-bottom: 2.1%;">
+        <ion-img src="assets/especias_new.png" (click)="verProductos(2)"
+          style="padding-top: 0px;margin-top: 0px;width:90%">
+        </ion-img> <!-- CUAL ID? -->
+      </ion-col>
+      <ion-col size="4" style="margin-bottom: 2.1%;">
+        <ion-img src="assets/otros_new.png" (click)="verProductos(5)"
+          style="padding-top: 0px;margin-top: 0px;width:90%">
+        </ion-img> <!-- CUAL ID? -->
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+
+</ion-content>
+<ion-footer>
+
+
+  <!-- <ion-grid class="p-0" style="text-align: center;color:white;">
+    <ion-row class="green">
+      <ion-col class="pb-3 m-0" size="6" class="green">
+        <ion-text (click)="shoppingList()">Ir al carrito</ion-text>
+      </ion-col>
+      <ion-col class="pb-3 m-0" size="6" style="background: #000;">
+        <ion-text (click)="viewOrders()">Ver pedidos</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+</ion-footer>

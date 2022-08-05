@@ -1,0 +1,59 @@
+.cp-text{
+    font-weight: bold;
+    font-size: 21px;
+    color:white;
+}
+
+.buscar-btn2{
+    border-radius: 20px;
+    font-size: 22px;
+    background-color: #ff7f23;
+    color: white;
+    padding: 10px 10px 10px;
+  }
+  
+
+.buscar-btn{
+  border-radius: 20px;
+  font-size: 22px;
+  background-color: #00b050;
+  color: white;
+  padding: 10px 10px 10px;
+}
+
+ion-toolbar {
+   --background: #ff7f23;
+}
+
+.buscar-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+::placeholder{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+
+ ion-input {
+    --placeholder-color: initial;
+    --placeholder-font-style: initial;
+    --placeholder-font-weight: bold !important;
+    text-align: center !important;
+    --placeholder-opacity: unset !important;
+}

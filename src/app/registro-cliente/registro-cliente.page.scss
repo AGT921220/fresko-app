@@ -1,0 +1,55 @@
+.cp-text{
+    font-weight: bold;
+    font-size: 21px;
+    color:white;
+}
+
+
+
+.buscar-btn{
+   border-radius: 20px;
+   font-size: 21px;
+   font-weight: bold;
+   background-color: #21ac39;
+   color: white;
+   padding: 12px 12px 12px;
+}
+
+.buscar-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+::placeholder{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+
+ ion-input {
+    --placeholder-color: initial;
+    --placeholder-font-style: initial;
+    --placeholder-font-weight: bold !important;
+    --placeholder-opacity: unset !important;
+    padding-bottom: 0px !important;
+}
+
+input.native-input {
+   padding-top: 0px !important;
+   padding-bottom: 0px !important;
+}

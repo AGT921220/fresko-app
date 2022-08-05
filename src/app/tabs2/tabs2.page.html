@@ -1,0 +1,30 @@
+
+  <ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button (click)="carrito()" *ngIf="this.global.esInvitado == false">
+        <ion-icon name="cart-outline" style="color:white;"></ion-icon>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">CARRITO</span>
+        <!-- <img class="custom-cart" style="width: 6.4vh;margin-top: 10%;"/> -->
+        <!-- <ion-icon color="light" name="cart-outline"></ion-icon> -->
+      </ion-tab-button>
+
+      <ion-tab-button (click)="pagar()" *ngIf="this.global.esInvitado == false">
+        <ion-icon name="cash-outline"  style="color:white;"></ion-icon>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">PAGAR</span>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="openWhatsapp()">
+        <ion-icon name="help-outline" style="color:white;"></ion-icon>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">AYUDA</span>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="back()">
+        <ion-icon name="arrow-back-outline" style="color:white;"></ion-icon>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">ATRÁS</span>
+      </ion-tab-button>
+
+    </ion-tab-bar>
+
+  </ion-tabs>

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="backToHome()" text="Volver">
+    </ion-back-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria.png" style="width:5%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+    <div class="header" style="text-align: center;">
+      <ion-img src="assets/header_logo.png" style="width: 55%;margin-left:22%"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+    </div>
+
+    <div class="body" style="text-align: center;height: 42vh;background-color: #ff7709;border-radius: 30px;">
+      <ion-img src="assets/icono_confirmacion.png" style="width: 25%;margin-left: 38%;text-align: center;"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+      <ion-img src="assets/confirmacion.png" style="width: 60%;margin-left: 20%;text-align: center;"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+      <ion-img src="assets/confirmacion_texto.png" style="width: 60%;margin-left: 20%;text-align: center;"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+    </div>
+    <div class="body-input" style="margin-left:10%;margin-right:10%;margin-top:8%">
+      <ion-input required style="border-bottom: 4px solid black;" inputmode="telephone" autocomplete="one-time-code" maxlength="5" [(ngModel)]="codigo_verificacion" type="number"
+        name="telephone" placeholder="INGRESA EL CODIGO">
+      </ion-input>
+    </div>
+    <div class="body-button" style="text-align: center;margin-top:2%">
+      <button type="button" class="buscar-btn" style="width: 26vh;" (click)="enviarSolicitud()">ENVIAR</button>
+    </div>
+
+  </div>
+</ion-content>

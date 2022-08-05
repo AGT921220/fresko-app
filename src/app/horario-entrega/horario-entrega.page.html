@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">Atrás</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-row style="margin-top: 20%;">
+    <ion-col size="2">
+    </ion-col>
+    <ion-col size="8">
+      <div class="body" style="text-align: center;height: 28vh;background-color: #ff7f23;border-radius: 30px;">
+        <div style="margin-top: 5%">
+          <ion-icon name="time-outline" style="font-size:58px;color:white;font-weight: bold;"></ion-icon>
+          <div style="text-align: center !important;margin-top:3%">
+            <span
+              style="color: white;font-weight: 500;font-size: 24px;width: 100%;display: block;font-weight: bold;">ELIGE
+              TU</span>
+            <span
+              style="color: white;font-weight: 500;font-size: 24px;width: 100%;display: block;font-weight: bold;">HORARIO
+              DE </span>
+            <span
+              style="color: white;font-weight: 500;font-size: 24px;width: 100%;display: block;font-weight: bold;">ENTREGA.</span>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+
+  <div class="body-input" style="margin-left:10%;margin-right:10%;margin-top:10%">
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col size="8" style="text-align: center;">
+        <button type="button" class="buscar-btn" style="width: 100%;"
+          (click)="elegirHorario('MATUTINO')">A DOMICILIO</button>
+        <span style="font-weight: bold;text-align: center;font-size: 13px;">de 12:30 PM a 4:00 PM</span>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col size="8" style="text-align: center;">
+        <button type="button" class="buscar-btn" style="width: 100%;"
+          (click)="elegirHorario('VESPERTINO')">EN ESCUELA</button>
+        <span style="font-weight: bold;text-align: center;font-size: 13px;">Horarios Varios</span>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
+  </div>
+  <ion-row *ngIf="horario_seleccionado != '' && horario_seleccionado != null">
+    <ion-col size="12" style="text-align: center;">
+      <span style="color:#ff7f23;font-weight: bold;font-size:12px"> {{horario_seleccionado_text}}</span>
+    </ion-col>
+  </ion-row>
+  <div class="body-button" style="text-align: center;margin-top:10%">
+    <button type="button" class="buscar-btn2" style="width: 28vh;font-weight: bold;"
+      (click)="continuar()">SIGUIENTE</button>
+  </div>
+
+
+</ion-content>

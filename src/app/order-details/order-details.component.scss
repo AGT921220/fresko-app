@@ -1,0 +1,77 @@
+.cp-text {
+  font-weight: bold;
+  font-size: 21px;
+  color: white;
+}
+
+.buscar-btn2 {
+  border-radius: 20px;
+  font-size: 22px;
+  background-color: #ff7f23;
+  color: white;
+  padding: 10px 10px 10px;
+}
+
+
+.buscar-btn {
+  border-radius: 20px;
+  font-size: 22px;
+  background-color: #00b050;
+  color: white;
+  padding: 10px 10px 10px;
+}
+
+ion-toolbar {
+  --background: #ff7f23;
+}
+
+.buscar-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+::placeholder {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
+}
+
+:-ms-input-placeholder {
+  text-align: center;
+}
+
+ion-input {
+  --placeholder-color: initial;
+  --placeholder-font-style: initial;
+  --placeholder-font-weight: bold !important;
+  text-align: center !important;
+  --placeholder-opacity: unset !important;
+}
+
+.custom-box {
+  color: white !important;
+  font-weight: bold !important;
+  background-color: #05a82d;
+  border-color: #c3e6cb;
+  font-weight: bold;
+  position: relative;
+  padding: .75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  margin: 1rem !important;
+}

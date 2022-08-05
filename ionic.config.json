@@ -1,0 +1,7 @@
+{
+  "name": "Agroinvex",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

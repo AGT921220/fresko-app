@@ -1,0 +1,43 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button class="custom-button" (click)="back()"
+        style="color: white !important;text-transform: capitalize !important;">
+        <ion-icon style="color: white !important;text-transform: capitalize !important;" name="chevron-back-outline">
+        </ion-icon>
+        <span style="color: white !important;font-weight: bold;">Atrás</span>
+      </ion-button>
+    </ion-buttons>
+    <ion-img src="assets/zanahoria_blanca.png"
+      style="width:6%;float:right;padding-top:0px!important;margin-top:0px!important"
+      class="img_header ion-margin-top ion-padding-top"></ion-img>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row style="margin-top: 20%;">
+    <ion-col size="2">
+    </ion-col>
+    <ion-col size="8">
+      <h3 style="font-weight: bold;font-size: 38px;text-align: center;">POR FAVOR REALICE SU PAGO EN SU BANCO Y ENVIE UNA CAPTURA A NUESTRO WHATSAPP</h3>
+    </ion-col>
+    <ion-col size="2"></ion-col>
+  </ion-row>
+
+  <div class="body-input" style="margin-left:10%;margin-right:10%;margin-top:10%">
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col size="8" style="text-align: center;">
+        <button type="button" class="buscar-btn2" style="width: 100%;"
+          (click)="finalizar()">ENVIAR PEDIDO</button>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
+  </div>
+
+
+
+</ion-content>

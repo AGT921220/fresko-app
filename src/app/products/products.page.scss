@@ -1,0 +1,20 @@
+.green {
+  background: #00b050;
+}
+ion-input {
+  --padding-top:0px;
+  --padding-bottom: 0px;
+}
+
+.header{
+  --background: white;
+  color: #FFF;
+  text-align: center;
+  width: 100%;
+  padding: 0px;
+}
+.header ion-text{
+  margin: auto;
+  display: block;
+  font-size: 1.0rem;
+}

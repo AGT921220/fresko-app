@@ -1,0 +1,47 @@
+ion-content {
+  /*   --background: url("../../assets/background_login.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover; */
+  --background: none;
+  --background-color: #fff;
+  background: #fff;
+}
+.img_header {
+  width: auto;
+  margin: auto;
+  display: block;
+}
+.header {
+  --background: #00b050;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 0px;
+}
+.header ion-text {
+  margin: auto;
+  display: block;
+  font-size: 1rem;
+}
+ion-footer {
+  background: #00b050;
+  font-size: 1rem;
+}
+.green {
+  background: #00b050;
+}
+
+
+ion-toolbar {
+  --background: #ff7f23;
+}
+
+
+.button-native {
+  color: white !important;
+  text-transform: capitalize !important;
+}
+
+.custom-button{
+  color: white !important;
+}

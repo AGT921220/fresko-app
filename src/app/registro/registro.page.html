@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="ion-padding">
+    <div class="header" style="text-align: center;">
+      <ion-img src="assets/logo_mercasav2.png" style="width: 40%;margin-left:31%"
+        class="img_header ion-margin-top ion-padding-top">
+      </ion-img>
+    </div>
+
+
+
+    <div class="body" style="margin-top:15%">
+      <div class="title" style="text-align: center;">
+        <span class="cp-text">INGRESA TU </span><br />
+        <span class="cp-text">CODIGO POSTAL</span>
+      </div>
+      <div class="body-input" style="margin-left:10%;margin-right:10%">
+
+        <!-- <ion-icon name="call" class="ion-padding-end"></ion-icon> -->
+        <ion-input type="tel" class="codigo-postal-custom" (ionFocus)="setInputFocus()"
+        (ionBlur)="unCheckFocus()" maxlength="5" minlength="5" [(ngModel)]="codigo_postal" placeholder="">
+        </ion-input>
+      </div>
+      <div class="body-button" style="text-align: center;margin-top:2%">
+        <button type="button" class="buscar-btn" style="width: 32vh;" (click)="buscarCodigoPostal()">BUSCAR</button>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</ion-content>
+
+<ion-footer *ngIf="showFooter" no-border class="ion-no-border">
+  <ion-row>
+  <ion-col size="6">
+    <ion-img src="assets/volver.png" style="width:35%;" (click)="regresarInicio()">
+    </ion-img>
+  </ion-col>
+  <ion-col size="6">
+    <ion-img src="assets/ayuda.png" (click)="openWhatsapp()" style="width:35%;float:right">
+    </ion-img>
+  </ion-col>
+</ion-row>
+</ion-footer>

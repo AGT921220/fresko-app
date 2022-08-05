@@ -1,0 +1,65 @@
+<body>
+  <ion-content>
+    <div class="ion-padding">
+      <ion-img
+        src="assets/pantalla_inicio.png"
+        style="width: 59%; margin-top: 15%; margin-bottom: 14%;"
+        class="img_header ion-margin-top ion-padding-top"
+      ></ion-img>
+
+      <ion-item lines="none" class="ion-margin-top">
+        <!-- <ion-icon name="call" class="ion-padding-end"></ion-icon> -->
+        <ion-input
+          required
+          type="tel"
+          class="input-custom"
+          inputmode="telephone"
+          maxlength="15"
+          minlength="5"
+          name="telephone"
+          placeholder="Celular"
+          [(ngModel)]="telephone"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="mt-2">
+        <!-- <ion-icon name="lock-closed" class="ion-padding-end"></ion-icon> -->
+        <ion-input
+          required
+          class="input-custom"
+          inputmode="password"
+          type="password"
+          maxlength="50"
+          minlength="5"
+          name="password"
+          placeholder="Contraseña"
+          [(ngModel)]="password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-button class="custom-button ion-margin-top" style="margin-top: 3%;" expand="block" (click)="login()"
+        >INGRESAR</ion-button
+      >
+
+      <h4 style="text-align: center;text-decoration: underline;color:black;padding-top:2%" (click)="goToRegistro()">REGISTRATE</h4>
+      <h5 style="text-align: center;color:black;padding-top:3%;font-size:16px" (click)="goToInvitado()">INVITADO</h5>
+      <div style="text-align: center;padding-top:10%" (click)="openWhatsapp()">
+        <ion-icon color="dark" style="font-size:48px" name="help-circle-outline"></ion-icon>
+      </div>
+      <!--       <ion-item
+        lines="none"
+        class="ion-text-center"
+        style="display:block;"
+        *ngIf="isLoading"
+      >
+        <ion-spinner name="lines"></ion-spinner>
+      </ion-item> -->
+
+      
+      <div *ngIf="showError" class="alert alert-danger mt-3" role="alert">
+        <h5>Error: {{message}}</h5>
+      </div>
+    </div>
+  </ion-content>
+</body>
