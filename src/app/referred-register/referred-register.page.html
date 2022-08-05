@@ -1,0 +1,19 @@
+<ion-content>
+
+
+
+  <div class="body-input" style="margin-left:10%;margin-right:10%;margin-top:8%">
+    <h2>Tienes algún numero de referido?</h2>
+    <ion-input required style="border-bottom: 4px solid black;" inputmode="telephone" autocomplete="one-time-code"
+      maxlength="10" [(ngModel)]="referred_code" type="number" name="telephone" placeholder="INGRESA EL CODIGO">
+    </ion-input>
+  </div>
+  <div class="body-button" style="text-align: center;margin-top:2%">
+    <button type="button" class="buscar-btn" style="width: 26vh;" (click)="enterReferredCode()">Aceptar</button>
+  </div>
+
+  <div class="body-button" style="text-align: center;margin-top:2%">
+    <button type="button" class="buscar-btn" style="width: 26vh;" (click)="skipReferredCode()">Omitir</button>
+  </div>
+
+</ion-content>

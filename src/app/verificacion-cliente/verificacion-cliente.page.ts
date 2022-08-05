@@ -51,7 +51,8 @@ export class VerificacionClientePage implements OnInit {
           this.global.setItemStorage('idUser', this.g.idUser);
           this.global.user_info.verificado = 1;
           this.global.setItemStorage('user_info', JSON.stringify(this.global.user_info));
-          this.global.showToastAndRedirect(result.message, "/tabs/categories");
+          this.global.showToastAndRedirect(result.message, '/referred-register');
+//          this.global.showToastAndRedirect(result.message, "/tabs/categories");
         }
       }
     } else{

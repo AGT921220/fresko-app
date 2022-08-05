@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 export class ApiService {
   readonly HOST = 'https://mercasa.mx/API/';
   //readonly HOST = 'http://localhost:4430/API/';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getUser(id_user) {
     const httpParams = new HttpParams().set('iduser', id_user);
@@ -23,41 +23,41 @@ export class ApiService {
       .set('id_paypal', id_paypal)
       .set('email', email)
       .set('nombre', nombre);
-      return this.http.post(this.HOST + 'updatePayment.php', httpParams);
-  }
-  
-  RegistrarCliente(obj){
-    return this.http.post( String(this.HOST + 'registrarCliente.php' ), this.getFormData(obj));
+    return this.http.post(this.HOST + 'updatePayment.php', httpParams);
   }
 
-  RegistrarSinCobertura(obj){
-    return this.http.post( String(this.HOST + 'registrarNoCobertura.php' ), this.getFormData(obj));
+  RegistrarCliente(obj) {
+    return this.http.post(String(this.HOST + 'registrarCliente.php'), this.getFormData(obj));
   }
 
-  getFlags(){
-    return this.http.get( String(this.HOST + 'getFlags.php' ) );
+  RegistrarSinCobertura(obj) {
+    return this.http.post(String(this.HOST + 'registrarNoCobertura.php'), this.getFormData(obj));
   }
 
-  VerificarCobertura(codigo_postal){
+  getFlags() {
+    return this.http.get(String(this.HOST + 'getFlags.php'));
+  }
+
+  VerificarCobertura(codigo_postal) {
     let obj = {
       codigo_postal: codigo_postal
     }
-    return this.http.post( String(this.HOST + 'verificarCobertura.php' ), this.getFormData(obj));
+    return this.http.post(String(this.HOST + 'verificarCobertura.php'), this.getFormData(obj));
   }
 
-  VerificacionSMS(celular, code){
+  VerificacionSMS(celular, code) {
     let obj = {
       celular: celular,
       code: code
     }
-    return this.http.post( String(this.HOST + 'enviarSMSConfirmacion.php' ), this.getFormData(obj));
+    return this.http.post(String(this.HOST + 'enviarSMSConfirmacion.php'), this.getFormData(obj));
   }
 
-  updateVerificacionSMS(id_user){
+  updateVerificacionSMS(id_user) {
     let obj = {
       id_user: id_user
     }
-    return this.http.post( String(this.HOST + 'updateVerificacionSMS.php' ), this.getFormData(obj));
+    return this.http.post(String(this.HOST + 'updateVerificacionSMS.php'), this.getFormData(obj));
   }
 
   updateDevice(iduser, device_id) {
@@ -75,7 +75,7 @@ export class ApiService {
     return this.http.post(this.HOST + 'getProductsV2.php', httpParams);
   }
 
-  createOrder(iduser: number, pickup: number, shoppingList: any[], notes: string, pickupnotes: string, free_delivery, discount, free_product, metodo_pago:string) {
+  createOrder(iduser: number, pickup: number, shoppingList: any[], notes: string, pickupnotes: string, free_delivery, discount, free_product, metodo_pago: string) {
     let httpParams = new HttpParams()
       .set('iduser', '' + iduser)
       .set('notes', '' + notes)
@@ -106,6 +106,18 @@ export class ApiService {
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
     return formData;
+  }
+
+  checkReferredCode(referred_code) {
+    return this.http.get(this.HOST + 'checkReferredCode.php?referred_code=' + referred_code);
+
+  }
+
+  registerReferredCode(referred_code, user_id) {
+
+    const httpParams = new HttpParams().set('referido_id', referred_code).set('referenciado_id', user_id);
+    return this.http.post(this.HOST + 'registerReferredCode.php', httpParams);
+
   }
 
 

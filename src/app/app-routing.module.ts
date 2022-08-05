@@ -9,8 +9,8 @@ const routes: Routes = [
     loadChildren: () => import('./categories/categories.module').then((m) => m.CategoriesPageModule),
   },
   {
-    path: 'referred',
-    loadChildren: () => import('./referred/referred.module').then((m) => m.ReferredPageModule),
+    path: 'referred-register',
+    loadChildren: () => import('./referred-register/referred-register.module').then((m) => m.ReferredRegisterPageModule),
   },
 
   {

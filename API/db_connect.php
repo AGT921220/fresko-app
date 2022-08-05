@@ -79,6 +79,9 @@ define("INSERT_ANUNCIO_NEW_USER", "INSERT INTO fressko_anuncios_user (id_anuncio
 define("INSERT_PAYMENT", "INSERT INTO fressko_payments (idorder, subtotal, id_paypal, email, nombre) VALUES (?, ?, ?, ?, ?)");
 define("UPDATE_PAGADO", "UPDATE fressko_order SET pagado = 1 WHERE idorder = ?");
 define("VALIDATE_CLIENTE", "SELECT iduser FROM fressko_user WHERE telephone = ?");
+define("QUERY_VERIFY_REFERRED", "SELECT * FROM fressko_user WHERE activated = 1 AND telephone = ?");
+define("QUERY_CHECK_REFERENCED", "SELECT * FROM fressko_referidos WHERE referenciado_id = ?");
+define("INSERT_REFERENCED", "INSERT INTO fressko_referidos (referido_id, referenciado_id) VALUES (?,?)");
 
 // $dbConnection = new PDO('mysql:host=198.71.235.14;dbname=fressko', 'rbedev', '651_LCD_573_1850_933_e@rbe');
 // $dbConnection = new PDO('mysql:host=localhost;dbname=fressko', 'rbedev', '651_LCD_573_1850_933_e@rbe');
