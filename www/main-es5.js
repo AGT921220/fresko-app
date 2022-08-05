@@ -1,6 +1,8 @@
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == typeof value && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -192,7 +194,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\r\n  <ion-tabs>\r\n\r\n    <ion-tab-bar slot=\"bottom\">\r\n\r\n      <ion-tab-button (click)=\"viewOrders()\" *ngIf=\"this.global.esInvitado == false\">\r\n        <!-- <img class=\"custom-bag\" style=\"width: 4.2vh;margin-top: 3%;\"/> -->\r\n        <ion-icon color=\"light\" name=\"basket-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">PEDIDOS</span>\r\n        <!-- <ion-icon color=\"light\" name=\"cart-outline\"></ion-icon> -->\r\n      </ion-tab-button>\r\n\r\n      <ion-tab-button (click)=\"verPerfil()\" *ngIf=\"this.global.esInvitado == false\">\r\n        <ion-icon color=\"light\" name=\"person-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">PERFIL</span>\r\n      </ion-tab-button>\r\n\r\n      <ion-tab-button (click)=\"openWhatsapp()\">\r\n        <ion-icon color=\"light\" name=\"help-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">AYUDA</span>\r\n      </ion-tab-button>\r\n\r\n      <ion-tab-button (click)=\"logout()\">\r\n        <ion-icon color=\"light\" name=\"arrow-back-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">SALIR</span>\r\n      </ion-tab-button>\r\n\r\n    </ion-tab-bar>\r\n\r\n  </ion-tabs>\r\n";
+    __webpack_exports__["default"] = "\r\n  <ion-tabs>\r\n\r\n    <ion-tab-bar slot=\"bottom\">\r\n\r\n      <ion-tab-button (click)=\"viewOrders()\" *ngIf=\"this.global.esInvitado == false\">\r\n        <!-- <img class=\"custom-bag\" style=\"width: 4.2vh;margin-top: 3%;\"/> -->\r\n        <ion-icon color=\"light\" name=\"basket-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">PEDIDOS</span>\r\n        <!-- <ion-icon color=\"light\" name=\"cart-outline\"></ion-icon> -->\r\n      </ion-tab-button>\r\n\r\n      <!-- <ion-tab-button (click)=\"verPerfil()\" *ngIf=\"this.global.esInvitado == false\">\r\n        <ion-icon color=\"light\" name=\"person-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">PERFIL</span>\r\n      </ion-tab-button> -->\r\n\r\n      \r\n      <ion-tab-button (click)=\"showRederred()\" *ngIf=\"this.global.esInvitado == false\">\r\n        <ion-icon color=\"light\" name=\"person-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">REFERIDOS</span>\r\n      </ion-tab-button>\r\n\r\n      <ion-tab-button (click)=\"openWhatsapp()\">\r\n        <ion-icon color=\"light\" name=\"help-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">AYUDA</span>\r\n      </ion-tab-button>\r\n\r\n      <ion-tab-button (click)=\"logout()\">\r\n        <ion-icon color=\"light\" name=\"arrow-back-outline\"></ion-icon>\r\n        <span style=\"font-size: 1.3vh;font-weight: 480;color: white;\">SALIR</span>\r\n      </ion-tab-button>\r\n\r\n    </ion-tab-bar>\r\n\r\n  </ion-tabs>\r\n";
     /***/
   },
 
@@ -278,6 +280,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         /*! ./categories/categories.module */
         "./src/app/categories/categories.module.ts")).then(function (m) {
           return m.CategoriesPageModule;
+        });
+      }
+    }, {
+      path: 'referred-register',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() | referred-register-referred-register-module */
+        "referred-register-referred-register-module").then(__webpack_require__.bind(null,
+        /*! ./referred-register/referred-register.module */
+        "./src/app/referred-register/referred-register.module.ts")).then(function (m) {
+          return m.ReferredRegisterPageModule;
         });
       }
     }, {
@@ -496,9 +509,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }];
 
-    var AppRoutingModule = function AppRoutingModule() {
+    var AppRoutingModule = /*#__PURE__*/_createClass(function AppRoutingModule() {
       _classCallCheck(this, AppRoutingModule);
-    };
+    });
 
     AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
@@ -621,10 +634,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AppComponent, [{
         key: "initializeApp",
         value: function initializeApp() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
             var _this = this;
 
-            return regeneratorRuntime.wrap(function _callee$(_context) {
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
@@ -646,6 +659,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
 
                   case 6:
+                    _context.next = 8;
+                    return this.global.verificarVersion();
+
+                  case 8:
                   case "end":
                     return _context.stop();
                 }
@@ -656,8 +673,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
@@ -675,10 +692,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFlags",
         value: function getFlags() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
             var _this2 = this;
 
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
@@ -948,9 +965,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic-native/in-app-browser/ngx */
     "./node_modules/@ionic-native/in-app-browser/__ivy_ngcc__/ngx/index.js");
 
-    var AppModule = function AppModule() {
+    var AppModule = /*#__PURE__*/_createClass(function AppModule() {
       _classCallCheck(this, AppModule);
-    };
+    });
 
     AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_5__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_15__["AppComponent"]],
@@ -1044,9 +1061,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _finish_order_page__WEBPACK_IMPORTED_MODULE_3__["FinishOrderPage"]
     }];
 
-    var FinishOrderPageRoutingModule = function FinishOrderPageRoutingModule() {
+    var FinishOrderPageRoutingModule = /*#__PURE__*/_createClass(function FinishOrderPageRoutingModule() {
       _classCallCheck(this, FinishOrderPageRoutingModule);
-    };
+    });
 
     FinishOrderPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
@@ -1117,9 +1134,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./finish-order.page */
     "./src/app/finish-order/finish-order.page.ts");
 
-    var FinishOrderPageModule = function FinishOrderPageModule() {
+    var FinishOrderPageModule = /*#__PURE__*/_createClass(function FinishOrderPageModule() {
       _classCallCheck(this, FinishOrderPageModule);
-    };
+    });
 
     FinishOrderPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _finish_order_routing_module__WEBPACK_IMPORTED_MODULE_5__["FinishOrderPageRoutingModule"]],
@@ -1144,7 +1161,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".img_header {\n  width: auto;\n  margin: auto;\n  display: block;\n}\n\nion-toolbar {\n  --background: #ff7f23;\n}\n\n.header {\n  color: #FFF;\n  text-align: center;\n  width: 100%;\n  padding: 0px;\n}\n\n.header ion-text {\n  margin: auto;\n  display: block;\n}\n\n.green {\n  background: #00b050;\n}\n\n.buscar-btn {\n  border-radius: 20px;\n  font-size: 14px;\n  font-weight: bold;\n  background-color: #ec760a;\n  color: white;\n  padding: 12px 12px 12px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZmluaXNoLW9yZGVyL0M6XFxVc2Vyc1xcRGV2ZWwyLUZlclxcRGVza3RvcFxcZnJlc3Nrb1xcRnJlc3NrbyBBcHAgeSBXZWIvc3JjXFxhcHBcXGZpbmlzaC1vcmRlclxcZmluaXNoLW9yZGVyLnBhZ2Uuc2NzcyIsInNyYy9hcHAvZmluaXNoLW9yZGVyL2ZpbmlzaC1vcmRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7QUNDSjs7QURDRTtFQUNFLHFCQUFBO0FDRUo7O0FERUU7RUFFRSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQ0FKOztBREVFO0VBQ0UsWUFBQTtFQUNBLGNBQUE7QUNDSjs7QURDRTtFQUNFLG1CQUFBO0FDRUo7O0FEQ0U7RUFDRSxtQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLHVCQUFBO0FDRUoiLCJmaWxlIjoic3JjL2FwcC9maW5pc2gtb3JkZXIvZmluaXNoLW9yZGVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbWdfaGVhZGVyIHtcclxuICAgIHdpZHRoOiBhdXRvO1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgfVxyXG4gIGlvbi10b29sYmFyIHtcclxuICAgIC0tYmFja2dyb3VuZDogI2ZmN2YyMztcclxuIH1cclxuXHJcbiBcclxuICAuaGVhZGVye1xyXG4gICAgLy8tLWJhY2tncm91bmQ6ICMwMGIwNTA7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcGFkZGluZzogMHB4O1xyXG4gIH1cclxuICAuaGVhZGVyIGlvbi10ZXh0e1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgfVxyXG4gIC5ncmVlbiB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMDBiMDUwO1xyXG4gIH1cclxuICBcclxuICAuYnVzY2FyLWJ0bntcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICBmb250LXNpemU6IDE0cHg7ICAgIFxyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWM3NjBhO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMTJweCAxMnB4IDEycHg7XHJcbiB9IiwiLmltZ19oZWFkZXIge1xuICB3aWR0aDogYXV0bztcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6ICNmZjdmMjM7XG59XG5cbi5oZWFkZXIge1xuICBjb2xvcjogI0ZGRjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uaGVhZGVyIGlvbi10ZXh0IHtcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLmdyZWVuIHtcbiAgYmFja2dyb3VuZDogIzAwYjA1MDtcbn1cblxuLmJ1c2Nhci1idG4ge1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWM3NjBhO1xuICBjb2xvcjogd2hpdGU7XG4gIHBhZGRpbmc6IDEycHggMTJweCAxMnB4O1xufSJdfQ== */";
+    __webpack_exports__["default"] = ".img_header {\n  width: auto;\n  margin: auto;\n  display: block;\n}\n\nion-toolbar {\n  --background: #ff7f23;\n}\n\n.header {\n  color: #FFF;\n  text-align: center;\n  width: 100%;\n  padding: 0px;\n}\n\n.header ion-text {\n  margin: auto;\n  display: block;\n}\n\n.green {\n  background: #00b050;\n}\n\n.buscar-btn {\n  border-radius: 20px;\n  font-size: 14px;\n  font-weight: bold;\n  background-color: #ec760a;\n  color: white;\n  padding: 12px 12px 12px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZnJlZG8vQWxmcmVkby9QZXJzb25hbC9Qcm95ZWN0b3MvRnJlc2tvL2ZyZXNrby1hcHAvc3JjL2FwcC9maW5pc2gtb3JkZXIvZmluaXNoLW9yZGVyLnBhZ2Uuc2NzcyIsInNyYy9hcHAvZmluaXNoLW9yZGVyL2ZpbmlzaC1vcmRlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7QUNDSjs7QURDRTtFQUNFLHFCQUFBO0FDRUo7O0FERUU7RUFFRSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQ0FKOztBREVFO0VBQ0UsWUFBQTtFQUNBLGNBQUE7QUNDSjs7QURDRTtFQUNFLG1CQUFBO0FDRUo7O0FEQ0U7RUFDRSxtQkFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtFQUNBLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLHVCQUFBO0FDRUoiLCJmaWxlIjoic3JjL2FwcC9maW5pc2gtb3JkZXIvZmluaXNoLW9yZGVyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbWdfaGVhZGVyIHtcclxuICAgIHdpZHRoOiBhdXRvO1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgfVxyXG4gIGlvbi10b29sYmFyIHtcclxuICAgIC0tYmFja2dyb3VuZDogI2ZmN2YyMztcclxuIH1cclxuXHJcbiBcclxuICAuaGVhZGVye1xyXG4gICAgLy8tLWJhY2tncm91bmQ6ICMwMGIwNTA7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcGFkZGluZzogMHB4O1xyXG4gIH1cclxuICAuaGVhZGVyIGlvbi10ZXh0e1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgfVxyXG4gIC5ncmVlbiB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMDBiMDUwO1xyXG4gIH1cclxuICBcclxuICAuYnVzY2FyLWJ0bntcclxuICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7XHJcbiAgICBmb250LXNpemU6IDE0cHg7ICAgIFxyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWM3NjBhO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgcGFkZGluZzogMTJweCAxMnB4IDEycHg7XHJcbiB9IiwiLmltZ19oZWFkZXIge1xuICB3aWR0aDogYXV0bztcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuaW9uLXRvb2xiYXIge1xuICAtLWJhY2tncm91bmQ6ICNmZjdmMjM7XG59XG5cbi5oZWFkZXIge1xuICBjb2xvcjogI0ZGRjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uaGVhZGVyIGlvbi10ZXh0IHtcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLmdyZWVuIHtcbiAgYmFja2dyb3VuZDogIzAwYjA1MDtcbn1cblxuLmJ1c2Nhci1idG4ge1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWM3NjBhO1xuICBjb2xvcjogd2hpdGU7XG4gIHBhZGRpbmc6IDEycHggMTJweCAxMnB4O1xufSJdfQ== */";
     /***/
   },
 
@@ -1486,7 +1503,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
-    var Globals = function Globals() {
+    var Globals = /*#__PURE__*/_createClass(function Globals() {
       _classCallCheck(this, Globals);
 
       this.idUser = -1;
@@ -1503,7 +1520,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.shoppingList = [];
       this.total_orden = 0;
       this.notes = '';
-    };
+    });
 
     Globals = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()], Globals);
     /***/
@@ -1558,9 +1575,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _pagar_stripe_page__WEBPACK_IMPORTED_MODULE_3__["PagarStripePage"]
     }];
 
-    var PagarStripePageRoutingModule = function PagarStripePageRoutingModule() {
+    var PagarStripePageRoutingModule = /*#__PURE__*/_createClass(function PagarStripePageRoutingModule() {
       _classCallCheck(this, PagarStripePageRoutingModule);
-    };
+    });
 
     PagarStripePageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
@@ -1637,9 +1654,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./pagar-stripe.page */
     "./src/app/pagar-stripe/pagar-stripe.page.ts");
 
-    var PagarStripePageModule = function PagarStripePageModule() {
+    var PagarStripePageModule = /*#__PURE__*/_createClass(function PagarStripePageModule() {
       _classCallCheck(this, PagarStripePageModule);
-    };
+    });
 
     PagarStripePageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], br_mask__WEBPACK_IMPORTED_MODULE_1__["BrMaskerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], _pagar_stripe_routing_module__WEBPACK_IMPORTED_MODULE_6__["PagarStripePageRoutingModule"]],
@@ -1664,7 +1681,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-col {\n  padding-top: 0px !important;\n  padding-left: 0px !important;\n  padding-right: 0px !important;\n  padding-bottom: 0px !important;\n}\n\n.full {\n  width: 100% !important;\n  padding-left: 0px !important;\n  padding-right: 0px !important;\n  padding-top: 0px !important;\n  padding-bottom: 0px !important;\n}\n\n.drawer-pull {\n  background: #cccccc;\n  height: 4px;\n  width: 60px;\n  border-radius: 2px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnYXItc3RyaXBlL0M6XFxVc2Vyc1xcRGV2ZWwyLUZlclxcRGVza3RvcFxcZnJlc3Nrb1xcRnJlc3NrbyBBcHAgeSBXZWIvc3JjXFxhcHBcXHBhZ2FyLXN0cmlwZVxccGFnYXItc3RyaXBlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnYXItc3RyaXBlL3BhZ2FyLXN0cmlwZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwyQkFBQTtFQUNBLDRCQUFBO0VBQ0EsNkJBQUE7RUFDQSw4QkFBQTtBQ0NKOztBREVBO0VBQ0ksc0JBQUE7RUFDQSw0QkFBQTtFQUNBLDZCQUFBO0VBQ0EsMkJBQUE7RUFDQSw4QkFBQTtBQ0NKOztBREVBO0VBQ0ksbUJBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdhci1zdHJpcGUvcGFnYXItc3RyaXBlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb2wge1xyXG4gICAgcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHggIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDBweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1ib3R0b206IDBweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZnVsbHtcclxuICAgIHdpZHRoOjEwMCUgIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctbGVmdDowcHggIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6MHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nLXRvcDowcHggIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctYm90dG9tOjBweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZHJhd2VyLXB1bGwge1xyXG4gICAgYmFja2dyb3VuZDogI2NjY2NjYztcclxuICAgIGhlaWdodDogNHB4O1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAycHg7XHJcbn0iLCJpb24tY29sIHtcbiAgcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLWxlZnQ6IDBweCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLXJpZ2h0OiAwcHggIWltcG9ydGFudDtcbiAgcGFkZGluZy1ib3R0b206IDBweCAhaW1wb3J0YW50O1xufVxuXG4uZnVsbCB7XG4gIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctbGVmdDogMHB4ICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctcmlnaHQ6IDBweCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctYm90dG9tOiAwcHggIWltcG9ydGFudDtcbn1cblxuLmRyYXdlci1wdWxsIHtcbiAgYmFja2dyb3VuZDogI2NjY2NjYztcbiAgaGVpZ2h0OiA0cHg7XG4gIHdpZHRoOiA2MHB4O1xuICBib3JkZXItcmFkaXVzOiAycHg7XG59Il19 */";
+    __webpack_exports__["default"] = "ion-col {\n  padding-top: 0px !important;\n  padding-left: 0px !important;\n  padding-right: 0px !important;\n  padding-bottom: 0px !important;\n}\n\n.full {\n  width: 100% !important;\n  padding-left: 0px !important;\n  padding-right: 0px !important;\n  padding-top: 0px !important;\n  padding-bottom: 0px !important;\n}\n\n.drawer-pull {\n  background: #cccccc;\n  height: 4px;\n  width: 60px;\n  border-radius: 2px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZnJlZG8vQWxmcmVkby9QZXJzb25hbC9Qcm95ZWN0b3MvRnJlc2tvL2ZyZXNrby1hcHAvc3JjL2FwcC9wYWdhci1zdHJpcGUvcGFnYXItc3RyaXBlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnYXItc3RyaXBlL3BhZ2FyLXN0cmlwZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwyQkFBQTtFQUNBLDRCQUFBO0VBQ0EsNkJBQUE7RUFDQSw4QkFBQTtBQ0NKOztBREVBO0VBQ0ksc0JBQUE7RUFDQSw0QkFBQTtFQUNBLDZCQUFBO0VBQ0EsMkJBQUE7RUFDQSw4QkFBQTtBQ0NKOztBREVBO0VBQ0ksbUJBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdhci1zdHJpcGUvcGFnYXItc3RyaXBlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1jb2wge1xyXG4gICAgcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1sZWZ0OiAwcHggIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6IDBweCAhaW1wb3J0YW50O1xyXG4gICAgcGFkZGluZy1ib3R0b206IDBweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZnVsbHtcclxuICAgIHdpZHRoOjEwMCUgIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctbGVmdDowcHggIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctcmlnaHQ6MHB4ICFpbXBvcnRhbnQ7XHJcbiAgICBwYWRkaW5nLXRvcDowcHggIWltcG9ydGFudDtcclxuICAgIHBhZGRpbmctYm90dG9tOjBweCAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZHJhd2VyLXB1bGwge1xyXG4gICAgYmFja2dyb3VuZDogI2NjY2NjYztcclxuICAgIGhlaWdodDogNHB4O1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAycHg7XHJcbn0iLCJpb24tY29sIHtcbiAgcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLWxlZnQ6IDBweCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLXJpZ2h0OiAwcHggIWltcG9ydGFudDtcbiAgcGFkZGluZy1ib3R0b206IDBweCAhaW1wb3J0YW50O1xufVxuXG4uZnVsbCB7XG4gIHdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctbGVmdDogMHB4ICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctcmlnaHQ6IDBweCAhaW1wb3J0YW50O1xuICBwYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctYm90dG9tOiAwcHggIWltcG9ydGFudDtcbn1cblxuLmRyYXdlci1wdWxsIHtcbiAgYmFja2dyb3VuZDogI2NjY2NjYztcbiAgaGVpZ2h0OiA0cHg7XG4gIHdpZHRoOiA2MHB4O1xuICBib3JkZXItcmFkaXVzOiAycHg7XG59Il19 */";
     /***/
   },
 
@@ -1825,8 +1842,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "validacionesTarjeta",
         value: function validacionesTarjeta() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+            return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
@@ -1913,11 +1930,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "payWithStripe",
         value: function payWithStripe() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
             var _this4 = this;
 
             var comision, comision_iva, a_pagar, cardDetails;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
@@ -1962,11 +1979,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "makePayment",
         value: function makePayment(token) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee6() {
             var _this5 = this;
 
             var comision, comision_iva, a_pagar, amount;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            return _regeneratorRuntime().wrap(function _callee6$(_context6) {
               while (1) {
                 switch (_context6.prev = _context6.next) {
                   case 0:
@@ -2197,6 +2214,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           formData.append("data", JSON.stringify(data));
           return formData;
         }
+      }, {
+        key: "checkReferredCode",
+        value: function checkReferredCode(referred_code) {
+          return this.http.get(this.HOST + 'checkReferredCode.php?referred_code=' + referred_code);
+        }
+      }, {
+        key: "registerReferredCode",
+        value: function registerReferredCode(referred_code, user_id) {
+          var httpParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('referido_id', referred_code).set('referenciado_id', user_id);
+          return this.http.post(this.HOST + 'registerReferredCode.php', httpParams);
+        }
       }]);
 
       return ApiService;
@@ -2326,9 +2354,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "verificarVersion",
         value: function verificarVersion() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
             var version, versionNumber, alert;
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            return _regeneratorRuntime().wrap(function _callee7$(_context7) {
               while (1) {
                 switch (_context7.prev = _context7.next) {
                   case 0:
@@ -2398,10 +2426,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCredentials",
         value: function getCredentials() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
             var _this6 = this;
 
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            return _regeneratorRuntime().wrap(function _callee8$(_context8) {
               while (1) {
                 switch (_context8.prev = _context8.next) {
                   case 0:
@@ -2448,8 +2476,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setItemStorage",
         value: function setItemStorage(keyName, value) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+            return _regeneratorRuntime().wrap(function _callee9$(_context9) {
               while (1) {
                 switch (_context9.prev = _context9.next) {
                   case 0:
@@ -2479,11 +2507,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "showToastAndRedirect",
         value: function showToastAndRedirect(message, routerUrl) {
           var cliente = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
             var _this7 = this;
 
             var color, navigationExtras;
-            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            return _regeneratorRuntime().wrap(function _callee10$(_context10) {
               while (1) {
                 switch (_context10.prev = _context10.next) {
                   case 0:
@@ -2528,9 +2556,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showToast",
         value: function showToast(message, anotherColor) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
             var color;
-            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            return _regeneratorRuntime().wrap(function _callee11$(_context11) {
               while (1) {
                 switch (_context11.prev = _context11.next) {
                   case 0:
@@ -2581,8 +2609,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "dismissToast",
         value: function dismissToast() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
-            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+            return _regeneratorRuntime().wrap(function _callee12$(_context12) {
               while (1) {
                 switch (_context12.prev = _context12.next) {
                   case 0:
@@ -2600,8 +2628,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "showLoading",
         value: function showLoading(msg) {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
-            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
+            return _regeneratorRuntime().wrap(function _callee13$(_context13) {
               while (1) {
                 switch (_context13.prev = _context13.next) {
                   case 0:
@@ -2638,8 +2666,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "dismissLoading",
         value: function dismissLoading() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
-            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
+            return _regeneratorRuntime().wrap(function _callee14$(_context14) {
               while (1) {
                 switch (_context14.prev = _context14.next) {
                   case 0:
@@ -2756,6 +2784,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }]
       }, {
+        path: 'referred',
+        children: [{
+          path: '',
+          loadChildren: function loadChildren() {
+            return __webpack_require__.e(
+            /*! import() | referred-referred-module */
+            "referred-referred-module").then(__webpack_require__.bind(null,
+            /*! ../referred/referred.module */
+            "./src/app/referred/referred.module.ts")).then(function (m) {
+              return m.ReferredPageModule;
+            });
+          }
+        }]
+      }, {
         path: 'orders',
         children: [{
           path: '',
@@ -2780,9 +2822,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       pathMatch: 'full'
     }];
 
-    var TabsPageRoutingModule = function TabsPageRoutingModule() {
+    var TabsPageRoutingModule = /*#__PURE__*/_createClass(function TabsPageRoutingModule() {
       _classCallCheck(this, TabsPageRoutingModule);
-    };
+    });
 
     TabsPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
@@ -2853,9 +2895,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./tabs.page */
     "./src/app/tabs/tabs.page.ts");
 
-    var TabsPageModule = function TabsPageModule() {
+    var TabsPageModule = /*#__PURE__*/_createClass(function TabsPageModule() {
       _classCallCheck(this, TabsPageModule);
-    };
+    });
 
     TabsPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
       imports: [_ionic_angular__WEBPACK_IMPORTED_MODULE_1__["IonicModule"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _tabs_routing_module__WEBPACK_IMPORTED_MODULE_5__["TabsPageRoutingModule"]],
@@ -2961,8 +3003,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(TabsPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
-            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee15() {
+            return _regeneratorRuntime().wrap(function _callee15$(_context15) {
               while (1) {
                 switch (_context15.prev = _context15.next) {
                   case 0:
@@ -2976,8 +3018,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "viewOrders",
         value: function viewOrders() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
-            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee16() {
+            return _regeneratorRuntime().wrap(function _callee16$(_context16) {
               while (1) {
                 switch (_context16.prev = _context16.next) {
                   case 0:
@@ -2997,6 +3039,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.router.navigate(['/tabs/categories']);
         }
       }, {
+        key: "showRederred",
+        value: function showRederred() {
+          this.router.navigate(['/tabs/referred']);
+        }
+      }, {
         key: "openWhatsapp",
         value: function openWhatsapp() {
           this.iab.create('http://api.whatsapp.com/send?phone=' + this.global.getAppConfigFlag("WHATSAPP"), "_system");
@@ -3004,8 +3051,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
-            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee17() {
+            return _regeneratorRuntime().wrap(function _callee17$(_context17) {
               while (1) {
                 switch (_context17.prev = _context17.next) {
                   case 0:
@@ -3135,9 +3182,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       pathMatch: 'full'
     }];
 
-    var Tabs2PageRoutingModule = function Tabs2PageRoutingModule() {
+    var Tabs2PageRoutingModule = /*#__PURE__*/_createClass(function Tabs2PageRoutingModule() {
       _classCallCheck(this, Tabs2PageRoutingModule);
-    };
+    });
 
     Tabs2PageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
@@ -3208,9 +3255,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./tabs2.page */
     "./src/app/tabs2/tabs2.page.ts");
 
-    var Tabs2PageModule = function Tabs2PageModule() {
+    var Tabs2PageModule = /*#__PURE__*/_createClass(function Tabs2PageModule() {
       _classCallCheck(this, Tabs2PageModule);
-    };
+    });
 
     Tabs2PageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _tabs2_routing_module__WEBPACK_IMPORTED_MODULE_5__["Tabs2PageRoutingModule"]],
@@ -3315,8 +3362,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(Tabs2Page, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
-            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee18() {
+            return _regeneratorRuntime().wrap(function _callee18$(_context18) {
               while (1) {
                 switch (_context18.prev = _context18.next) {
                   case 0:
@@ -3437,7 +3484,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\Users\Devel2-Fer\Desktop\fressko\Fressko App y Web\src\main.ts */
+    /*! /home/alfredo/Alfredo/Personal/Proyectos/Fresko/fresko-app/src/main.ts */
     "./src/main.ts");
     /***/
   }

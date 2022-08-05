@@ -12,7 +12,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["shadow-css-a3f00b33-js"], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/shadow-css-a3f00b33.js": function node_modulesIonicCoreDistEsmShadowCssA3f00b33Js(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/@ionic/core/dist/esm/shadow-css-a3f00b33.js":
+  /*!******************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/shadow-css-a3f00b33.js ***!
+    \******************************************************************/
+
+  /*! exports provided: scopeCss */
+
+  /***/
+  function node_modulesIonicCoreDistEsmShadowCssA3f00b33Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

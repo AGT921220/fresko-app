@@ -1,6 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-css-shim"], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/css-shim-2ccf4dec.js": function node_modulesIonicCoreDistEsmCssShim2ccf4decJs(module, exports) {
+  "./node_modules/@ionic/core/dist/esm/css-shim-2ccf4dec.js":
+  /*!****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/css-shim-2ccf4dec.js ***!
+    \****************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesIonicCoreDistEsmCssShim2ccf4decJs(module, exports) {
     /*
      Stencil Client Patch Esm v2.5.0 | MIT Licensed | https://stenciljs.com
      */

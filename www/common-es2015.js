@@ -81,9 +81,9 @@ const createButtonActiveGesture = (el, isButton) => {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/framework-delegate-4392cd63.js":
+/***/ "./node_modules/@ionic/core/dist/esm/framework-delegate-94e770cc.js":
 /*!**************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-4392cd63.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/framework-delegate-94e770cc.js ***!
   \**************************************************************************/
 /*! exports provided: a, d */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -92,7 +92,7 @@ const createButtonActiveGesture = (el, isButton) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return attachComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return detachComponent; });
-/* harmony import */ var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-dd7e4b7b.js */ "./node_modules/@ionic/core/dist/esm/helpers-dd7e4b7b.js");
+/* harmony import */ var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-1457892a.js */ "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
 
 
 const attachComponent = async (delegate, container, component, cssClasses, componentProps) => {
@@ -112,7 +112,7 @@ const attachComponent = async (delegate, container, component, cssClasses, compo
     Object.assign(el, componentProps);
   }
   container.appendChild(el);
-  await new Promise(resolve => Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_0__["c"])(el, resolve));
+  await new Promise(resolve => Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_0__["c"])(el, resolve));
   return el;
 };
 const detachComponent = (delegate, element) => {

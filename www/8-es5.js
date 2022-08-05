@@ -4,11 +4,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[8], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-checkbox.entry.js": function node_modulesIonicCoreDistEsmIonCheckboxEntryJs(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/@ionic/core/dist/esm/ion-checkbox.entry.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-checkbox.entry.js ***!
+    \*****************************************************************/
+
+  /*! exports provided: ion_checkbox */
+
+  /***/
+  function node_modulesIonicCoreDistEsmIonCheckboxEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -33,9 +41,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-dd7e4b7b.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-dd7e4b7b.js");
+    var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-1457892a.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
     /* harmony import */
 
 
@@ -156,12 +164,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               value = this.value;
           var mode = Object(_ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
 
-          var _Object = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__["d"])(el, inputId),
+          var _Object = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["d"])(el, inputId),
               label = _Object.label,
               labelId = _Object.labelId,
               labelText = _Object.labelText;
 
-          Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__["e"])(true, el, name, checked ? value : '', disabled);
+          Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["e"])(true, el, name, checked ? value : '', disabled);
           var path = indeterminate ? Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("path", {
             d: "M6 12L18 12",
             part: "mark"

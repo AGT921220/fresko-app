@@ -1,12 +1,20 @@
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["products-products-module"], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/products/products.page.html": function node_modulesRawLoaderDistCjsJsSrcAppProductsProductsPageHtml(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/products/products.page.html":
+  /*!***********************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/products/products.page.html ***!
+    \***********************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppProductsProductsPageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -18,7 +26,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/products/products-routing.module.ts": function srcAppProductsProductsRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/products/products-routing.module.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/products/products-routing.module.ts ***!
+    \*****************************************************/
+
+  /*! exports provided: ProductsPageRoutingModule */
+
+  /***/
+  function srcAppProductsProductsRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -58,9 +74,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _products_page__WEBPACK_IMPORTED_MODULE_3__["ProductsPage"]
     }];
 
-    var ProductsPageRoutingModule = function ProductsPageRoutingModule() {
+    var ProductsPageRoutingModule = /*#__PURE__*/_createClass(function ProductsPageRoutingModule() {
       _classCallCheck(this, ProductsPageRoutingModule);
-    };
+    });
 
     ProductsPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
@@ -70,7 +86,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/products/products.module.ts": function srcAppProductsProductsModuleTs(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/products/products.module.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/products/products.module.ts ***!
+    \*********************************************/
+
+  /*! exports provided: ProductsPageModule */
+
+  /***/
+  function srcAppProductsProductsModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -123,9 +147,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./products.page */
     "./src/app/products/products.page.ts");
 
-    var ProductsPageModule = function ProductsPageModule() {
+    var ProductsPageModule = /*#__PURE__*/_createClass(function ProductsPageModule() {
       _classCallCheck(this, ProductsPageModule);
-    };
+    });
 
     ProductsPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _products_routing_module__WEBPACK_IMPORTED_MODULE_5__["ProductsPageRoutingModule"]],
@@ -135,19 +159,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/products/products.page.scss": function srcAppProductsProductsPageScss(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/products/products.page.scss":
+  /*!*********************************************!*\
+    !*** ./src/app/products/products.page.scss ***!
+    \*********************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppProductsProductsPageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".green {\n  background: #00b050;\n}\n\nion-input {\n  --padding-top:0px;\n  --padding-bottom: 0px;\n}\n\n.header {\n  --background: white;\n  color: #FFF;\n  text-align: center;\n  width: 100%;\n  padding: 0px;\n}\n\n.header ion-text {\n  margin: auto;\n  display: block;\n  font-size: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZHVjdHMvQzpcXFVzZXJzXFxEZXZlbDItRmVyXFxEZXNrdG9wXFxmcmVzc2tvXFxGcmVzc2tvIEFwcCB5IFdlYi9zcmNcXGFwcFxccHJvZHVjdHNcXHByb2R1Y3RzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJvZHVjdHMvcHJvZHVjdHMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUNDRjs7QURDQTtFQUNFLGlCQUFBO0VBQ0EscUJBQUE7QUNFRjs7QURDQTtFQUNFLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUNFRjs7QURBQTtFQUNFLFlBQUE7RUFDQSxjQUFBO0VBQ0EsZUFBQTtBQ0dGIiwiZmlsZSI6InNyYy9hcHAvcHJvZHVjdHMvcHJvZHVjdHMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmdyZWVuIHtcclxuICBiYWNrZ3JvdW5kOiAjMDBiMDUwO1xyXG59XHJcbmlvbi1pbnB1dCB7XHJcbiAgLS1wYWRkaW5nLXRvcDowcHg7XHJcbiAgLS1wYWRkaW5nLWJvdHRvbTogMHB4O1xyXG59XHJcblxyXG4uaGVhZGVye1xyXG4gIC0tYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgY29sb3I6ICNGRkY7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIHBhZGRpbmc6IDBweDtcclxufVxyXG4uaGVhZGVyIGlvbi10ZXh0e1xyXG4gIG1hcmdpbjogYXV0bztcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBmb250LXNpemU6IDEuMHJlbTtcclxufSIsIi5ncmVlbiB7XG4gIGJhY2tncm91bmQ6ICMwMGIwNTA7XG59XG5cbmlvbi1pbnB1dCB7XG4gIC0tcGFkZGluZy10b3A6MHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAwcHg7XG59XG5cbi5oZWFkZXIge1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xuICBjb2xvcjogI0ZGRjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uaGVhZGVyIGlvbi10ZXh0IHtcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgZm9udC1zaXplOiAxcmVtO1xufSJdfQ== */";
+    __webpack_exports__["default"] = ".green {\n  background: #00b050;\n}\n\nion-input {\n  --padding-top:0px;\n  --padding-bottom: 0px;\n}\n\n.header {\n  --background: white;\n  color: #FFF;\n  text-align: center;\n  width: 100%;\n  padding: 0px;\n}\n\n.header ion-text {\n  margin: auto;\n  display: block;\n  font-size: 1rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZnJlZG8vQWxmcmVkby9QZXJzb25hbC9Qcm95ZWN0b3MvRnJlc2tvL2ZyZXNrby1hcHAvc3JjL2FwcC9wcm9kdWN0cy9wcm9kdWN0cy5wYWdlLnNjc3MiLCJzcmMvYXBwL3Byb2R1Y3RzL3Byb2R1Y3RzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG1CQUFBO0FDQ0Y7O0FEQ0E7RUFDRSxpQkFBQTtFQUNBLHFCQUFBO0FDRUY7O0FEQ0E7RUFDRSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0FDRUY7O0FEQUE7RUFDRSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7QUNHRiIsImZpbGUiOiJzcmMvYXBwL3Byb2R1Y3RzL3Byb2R1Y3RzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ncmVlbiB7XHJcbiAgYmFja2dyb3VuZDogIzAwYjA1MDtcclxufVxyXG5pb24taW5wdXQge1xyXG4gIC0tcGFkZGluZy10b3A6MHB4O1xyXG4gIC0tcGFkZGluZy1ib3R0b206IDBweDtcclxufVxyXG5cclxuLmhlYWRlcntcclxuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xyXG4gIGNvbG9yOiAjRkZGO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICB3aWR0aDogMTAwJTtcclxuICBwYWRkaW5nOiAwcHg7XHJcbn1cclxuLmhlYWRlciBpb24tdGV4dHtcclxuICBtYXJnaW46IGF1dG87XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgZm9udC1zaXplOiAxLjByZW07XHJcbn0iLCIuZ3JlZW4ge1xuICBiYWNrZ3JvdW5kOiAjMDBiMDUwO1xufVxuXG5pb24taW5wdXQge1xuICAtLXBhZGRpbmctdG9wOjBweDtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMHB4O1xufVxuXG4uaGVhZGVyIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgY29sb3I6ICNGRkY7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDBweDtcbn1cblxuLmhlYWRlciBpb24tdGV4dCB7XG4gIG1hcmdpbjogYXV0bztcbiAgZGlzcGxheTogYmxvY2s7XG4gIGZvbnQtc2l6ZTogMXJlbTtcbn0iXX0= */";
     /***/
   },
 
   /***/
-  "./src/app/products/products.page.ts": function srcAppProductsProductsPageTs(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/products/products.page.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/products/products.page.ts ***!
+    \*******************************************/
+
+  /*! exports provided: ProductsPage */
+
+  /***/
+  function srcAppProductsProductsPageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

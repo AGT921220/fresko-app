@@ -1,6 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["focus-visible-f4ad4f1a-js"], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/focus-visible-f4ad4f1a.js": function node_modulesIonicCoreDistEsmFocusVisibleF4ad4f1aJs(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/@ionic/core/dist/esm/focus-visible-f4ad4f1a.js":
+  /*!*********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/focus-visible-f4ad4f1a.js ***!
+    \*********************************************************************/
+
+  /*! exports provided: startFocusVisible */
+
+  /***/
+  function node_modulesIonicCoreDistEsmFocusVisibleF4ad4f1aJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

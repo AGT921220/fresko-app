@@ -1,12 +1,20 @@
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["paquetes-disponibles-paquetes-disponibles-module"], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/paquetes-disponibles/paquetes-disponibles.page.html": function node_modulesRawLoaderDistCjsJsSrcAppPaquetesDisponiblesPaquetesDisponiblesPageHtml(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/paquetes-disponibles/paquetes-disponibles.page.html":
+  /*!***********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/paquetes-disponibles/paquetes-disponibles.page.html ***!
+    \***********************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPaquetesDisponiblesPaquetesDisponiblesPageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -18,7 +26,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/paquetes-disponibles/paquetes-disponibles-routing.module.ts": function srcAppPaquetesDisponiblesPaquetesDisponiblesRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/paquetes-disponibles/paquetes-disponibles-routing.module.ts":
+  /*!*****************************************************************************!*\
+    !*** ./src/app/paquetes-disponibles/paquetes-disponibles-routing.module.ts ***!
+    \*****************************************************************************/
+
+  /*! exports provided: PaquetesDisponiblesPageRoutingModule */
+
+  /***/
+  function srcAppPaquetesDisponiblesPaquetesDisponiblesRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -58,9 +74,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       component: _paquetes_disponibles_page__WEBPACK_IMPORTED_MODULE_3__["PaquetesDisponiblesPage"]
     }];
 
-    var PaquetesDisponiblesPageRoutingModule = function PaquetesDisponiblesPageRoutingModule() {
+    var PaquetesDisponiblesPageRoutingModule = /*#__PURE__*/_createClass(function PaquetesDisponiblesPageRoutingModule() {
       _classCallCheck(this, PaquetesDisponiblesPageRoutingModule);
-    };
+    });
 
     PaquetesDisponiblesPageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
@@ -70,7 +86,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/paquetes-disponibles/paquetes-disponibles.module.ts": function srcAppPaquetesDisponiblesPaquetesDisponiblesModuleTs(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/paquetes-disponibles/paquetes-disponibles.module.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/paquetes-disponibles/paquetes-disponibles.module.ts ***!
+    \*********************************************************************/
+
+  /*! exports provided: PaquetesDisponiblesPageModule */
+
+  /***/
+  function srcAppPaquetesDisponiblesPaquetesDisponiblesModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -123,9 +147,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./paquetes-disponibles.page */
     "./src/app/paquetes-disponibles/paquetes-disponibles.page.ts");
 
-    var PaquetesDisponiblesPageModule = function PaquetesDisponiblesPageModule() {
+    var PaquetesDisponiblesPageModule = /*#__PURE__*/_createClass(function PaquetesDisponiblesPageModule() {
       _classCallCheck(this, PaquetesDisponiblesPageModule);
-    };
+    });
 
     PaquetesDisponiblesPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _paquetes_disponibles_routing_module__WEBPACK_IMPORTED_MODULE_5__["PaquetesDisponiblesPageRoutingModule"]],
@@ -135,19 +159,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/paquetes-disponibles/paquetes-disponibles.page.scss": function srcAppPaquetesDisponiblesPaquetesDisponiblesPageScss(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/paquetes-disponibles/paquetes-disponibles.page.scss":
+  /*!*********************************************************************!*\
+    !*** ./src/app/paquetes-disponibles/paquetes-disponibles.page.scss ***!
+    \*********************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPaquetesDisponiblesPaquetesDisponiblesPageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".green {\n  background: #00b050;\n}\n\nion-input {\n  --padding-top:0px;\n  --padding-bottom: 0px;\n}\n\n.header {\n  --background: white;\n  color: #FFF;\n  text-align: center;\n  width: 100%;\n  padding: 0px;\n}\n\n.header ion-text {\n  margin: auto;\n  display: block;\n  font-size: 1rem;\n}\n\n.buscar-btn {\n  border-radius: 20px;\n  font-size: 14px;\n  font-weight: bold;\n  background-color: #ec760a;\n  color: white;\n  padding: 12px 12px 12px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFxdWV0ZXMtZGlzcG9uaWJsZXMvQzpcXFVzZXJzXFxEZXZlbDItRmVyXFxEZXNrdG9wXFxmcmVzc2tvXFxGcmVzc2tvIEFwcCB5IFdlYi9zcmNcXGFwcFxccGFxdWV0ZXMtZGlzcG9uaWJsZXNcXHBhcXVldGVzLWRpc3BvbmlibGVzLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFxdWV0ZXMtZGlzcG9uaWJsZXMvcGFxdWV0ZXMtZGlzcG9uaWJsZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksbUJBQUE7QUNDSjs7QURDRTtFQUNFLGlCQUFBO0VBQ0EscUJBQUE7QUNFSjs7QURDRTtFQUNFLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUNFSjs7QURBRTtFQUNFLFlBQUE7RUFDQSxjQUFBO0VBQ0EsZUFBQTtBQ0dKOztBRENFO0VBQ0UsbUJBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7RUFDQSx5QkFBQTtFQUNBLFlBQUE7RUFDQSx1QkFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvcGFxdWV0ZXMtZGlzcG9uaWJsZXMvcGFxdWV0ZXMtZGlzcG9uaWJsZXMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmdyZWVuIHtcclxuICAgIGJhY2tncm91bmQ6ICMwMGIwNTA7XHJcbiAgfVxyXG4gIGlvbi1pbnB1dCB7XHJcbiAgICAtLXBhZGRpbmctdG9wOjBweDtcclxuICAgIC0tcGFkZGluZy1ib3R0b206IDBweDtcclxuICB9XHJcbiAgXHJcbiAgLmhlYWRlcntcclxuICAgIC0tYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICBjb2xvcjogI0ZGRjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcGFkZGluZzogMHB4O1xyXG4gIH1cclxuICAuaGVhZGVyIGlvbi10ZXh0e1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICBmb250LXNpemU6IDEuMHJlbTtcclxuICB9XHJcblxyXG4gICAgXHJcbiAgLmJ1c2Nhci1idG57XHJcbiAgICBib3JkZXItcmFkaXVzOiAyMHB4O1xyXG4gICAgZm9udC1zaXplOiAxNHB4OyAgICBcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2VjNzYwYTtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIHBhZGRpbmc6IDEycHggMTJweCAxMnB4O1xyXG4gfSIsIi5ncmVlbiB7XG4gIGJhY2tncm91bmQ6ICMwMGIwNTA7XG59XG5cbmlvbi1pbnB1dCB7XG4gIC0tcGFkZGluZy10b3A6MHB4O1xuICAtLXBhZGRpbmctYm90dG9tOiAwcHg7XG59XG5cbi5oZWFkZXIge1xuICAtLWJhY2tncm91bmQ6IHdoaXRlO1xuICBjb2xvcjogI0ZGRjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aWR0aDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uaGVhZGVyIGlvbi10ZXh0IHtcbiAgbWFyZ2luOiBhdXRvO1xuICBkaXNwbGF5OiBibG9jaztcbiAgZm9udC1zaXplOiAxcmVtO1xufVxuXG4uYnVzY2FyLWJ0biB7XG4gIGJvcmRlci1yYWRpdXM6IDIwcHg7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlYzc2MGE7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgcGFkZGluZzogMTJweCAxMnB4IDEycHg7XG59Il19 */";
+    __webpack_exports__["default"] = ".green {\n  background: #00b050;\n}\n\nion-input {\n  --padding-top:0px;\n  --padding-bottom: 0px;\n}\n\n.header {\n  --background: white;\n  color: #FFF;\n  text-align: center;\n  width: 100%;\n  padding: 0px;\n}\n\n.header ion-text {\n  margin: auto;\n  display: block;\n  font-size: 1rem;\n}\n\n.buscar-btn {\n  border-radius: 20px;\n  font-size: 14px;\n  font-weight: bold;\n  background-color: #ec760a;\n  color: white;\n  padding: 12px 12px 12px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FsZnJlZG8vQWxmcmVkby9QZXJzb25hbC9Qcm95ZWN0b3MvRnJlc2tvL2ZyZXNrby1hcHAvc3JjL2FwcC9wYXF1ZXRlcy1kaXNwb25pYmxlcy9wYXF1ZXRlcy1kaXNwb25pYmxlcy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhcXVldGVzLWRpc3BvbmlibGVzL3BhcXVldGVzLWRpc3BvbmlibGVzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG1CQUFBO0FDQ0o7O0FEQ0U7RUFDRSxpQkFBQTtFQUNBLHFCQUFBO0FDRUo7O0FEQ0U7RUFDRSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0FDRUo7O0FEQUU7RUFDRSxZQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7QUNHSjs7QURDRTtFQUNFLG1CQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0EseUJBQUE7RUFDQSxZQUFBO0VBQ0EsdUJBQUE7QUNFSiIsImZpbGUiOiJzcmMvYXBwL3BhcXVldGVzLWRpc3BvbmlibGVzL3BhcXVldGVzLWRpc3BvbmlibGVzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5ncmVlbiB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMDBiMDUwO1xyXG4gIH1cclxuICBpb24taW5wdXQge1xyXG4gICAgLS1wYWRkaW5nLXRvcDowcHg7XHJcbiAgICAtLXBhZGRpbmctYm90dG9tOiAwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC5oZWFkZXJ7XHJcbiAgICAtLWJhY2tncm91bmQ6IHdoaXRlO1xyXG4gICAgY29sb3I6ICNGRkY7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIHBhZGRpbmc6IDBweDtcclxuICB9XHJcbiAgLmhlYWRlciBpb24tdGV4dHtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgZm9udC1zaXplOiAxLjByZW07XHJcbiAgfVxyXG5cclxuICAgIFxyXG4gIC5idXNjYXItYnRue1xyXG4gICAgYm9yZGVyLXJhZGl1czogMjBweDtcclxuICAgIGZvbnQtc2l6ZTogMTRweDsgICAgXHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNlYzc2MGE7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICBwYWRkaW5nOiAxMnB4IDEycHggMTJweDtcclxuIH0iLCIuZ3JlZW4ge1xuICBiYWNrZ3JvdW5kOiAjMDBiMDUwO1xufVxuXG5pb24taW5wdXQge1xuICAtLXBhZGRpbmctdG9wOjBweDtcbiAgLS1wYWRkaW5nLWJvdHRvbTogMHB4O1xufVxuXG4uaGVhZGVyIHtcbiAgLS1iYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgY29sb3I6ICNGRkY7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDBweDtcbn1cblxuLmhlYWRlciBpb24tdGV4dCB7XG4gIG1hcmdpbjogYXV0bztcbiAgZGlzcGxheTogYmxvY2s7XG4gIGZvbnQtc2l6ZTogMXJlbTtcbn1cblxuLmJ1c2Nhci1idG4ge1xuICBib3JkZXItcmFkaXVzOiAyMHB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZWM3NjBhO1xuICBjb2xvcjogd2hpdGU7XG4gIHBhZGRpbmc6IDEycHggMTJweCAxMnB4O1xufSJdfQ== */";
     /***/
   },
 
   /***/
-  "./src/app/paquetes-disponibles/paquetes-disponibles.page.ts": function srcAppPaquetesDisponiblesPaquetesDisponiblesPageTs(module, __webpack_exports__, __webpack_require__) {
+  "./src/app/paquetes-disponibles/paquetes-disponibles.page.ts":
+  /*!*******************************************************************!*\
+    !*** ./src/app/paquetes-disponibles/paquetes-disponibles.page.ts ***!
+    \*******************************************************************/
+
+  /*! exports provided: PaquetesDisponiblesPage */
+
+  /***/
+  function srcAppPaquetesDisponiblesPaquetesDisponiblesPageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

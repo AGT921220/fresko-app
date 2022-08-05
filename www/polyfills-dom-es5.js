@@ -1,6 +1,14 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-dom"], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/polyfills/dom.js": function node_modulesIonicCoreDistEsmPolyfillsDomJs(module, exports) {
+  "./node_modules/@ionic/core/dist/esm/polyfills/dom.js":
+  /*!************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/polyfills/dom.js ***!
+    \************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesIonicCoreDistEsmPolyfillsDomJs(module, exports) {
     (function () {
       /*
         Copyright (c) 2016 The Polymer Project Authors. All rights reserved.

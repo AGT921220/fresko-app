@@ -4,11 +4,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-button_2.entry.js": function node_modulesIonicCoreDistEsmIonButton_2EntryJs(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/@ionic/core/dist/esm/ion-button_2.entry.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-button_2.entry.js ***!
+    \*****************************************************************/
+
+  /*! exports provided: ion_button, ion_icon */
+
+  /***/
+  function node_modulesIonicCoreDistEsmIonButton_2EntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -39,9 +47,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-dd7e4b7b.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-dd7e4b7b.js");
+    var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-1457892a.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
     /* harmony import */
 
 
@@ -208,7 +216,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.handleClick = function (ev) {
           if (_this.type === 'button') {
             Object(_theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection, _this.routerAnimation);
-          } else if (Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__["k"])(_this.el)) {
+          } else if (Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["l"])(_this.el)) {
             // this button wants to specifically submit a form
             // climb up the dom to see if we're in a <form>
             // and if so, then use JS to submit it
@@ -241,7 +249,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.inToolbar = !!this.el.closest('ion-buttons');
           this.inListHeader = !!this.el.closest('ion-list-header');
           this.inItem = !!this.el.closest('ion-item') || !!this.el.closest('ion-item-divider');
-          this.inheritedAttributes = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.el, ['aria-label']);
+          this.inheritedAttributes = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.el);
         }
       }, {
         key: "hasIconOnly",

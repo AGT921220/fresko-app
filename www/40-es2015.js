@@ -12,12 +12,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_toast", function() { return Toast; });
 /* harmony import */ var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-7a8b7a1c.js */ "./node_modules/@ionic/core/dist/esm/index-7a8b7a1c.js");
 /* harmony import */ var _ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-63a97a32.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-63a97a32.js");
-/* harmony import */ var _overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./overlays-e9ccff30.js */ "./node_modules/@ionic/core/dist/esm/overlays-e9ccff30.js");
+/* harmony import */ var _overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./overlays-a62f858b.js */ "./node_modules/@ionic/core/dist/esm/overlays-a62f858b.js");
 /* harmony import */ var _index_9e3fe806_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index-9e3fe806.js */ "./node_modules/@ionic/core/dist/esm/index-9e3fe806.js");
 /* harmony import */ var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-ff3fc52f.js */ "./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js");
-/* harmony import */ var _animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animation-096c6391.js */ "./node_modules/@ionic/core/dist/esm/animation-096c6391.js");
+/* harmony import */ var _animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./animation-822d986b.js */ "./node_modules/@ionic/core/dist/esm/animation-822d986b.js");
 /* harmony import */ var _hardware_back_button_4a6b37fb_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hardware-back-button-4a6b37fb.js */ "./node_modules/@ionic/core/dist/esm/hardware-back-button-4a6b37fb.js");
-/* harmony import */ var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./helpers-dd7e4b7b.js */ "./node_modules/@ionic/core/dist/esm/helpers-dd7e4b7b.js");
+/* harmony import */ var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./helpers-1457892a.js */ "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
 
 
 
@@ -31,8 +31,8 @@ __webpack_require__.r(__webpack_exports__);
  * iOS Toast Enter Animation
  */
 const iosEnterAnimation = (baseEl, position) => {
-  const baseAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
-  const wrapperAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const baseAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const wrapperAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
   const hostEl = baseEl.host || baseEl;
   const wrapperEl = baseEl.querySelector('.toast-wrapper');
   const bottom = `calc(-10px - var(--ion-safe-area-bottom, 0px))`;
@@ -62,8 +62,8 @@ const iosEnterAnimation = (baseEl, position) => {
  * iOS Toast Leave Animation
  */
 const iosLeaveAnimation = (baseEl, position) => {
-  const baseAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
-  const wrapperAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const baseAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const wrapperAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
   const hostEl = baseEl.host || baseEl;
   const wrapperEl = baseEl.querySelector('.toast-wrapper');
   const bottom = `calc(-10px - var(--ion-safe-area-bottom, 0px))`;
@@ -91,8 +91,8 @@ const iosLeaveAnimation = (baseEl, position) => {
  * MD Toast Enter Animation
  */
 const mdEnterAnimation = (baseEl, position) => {
-  const baseAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
-  const wrapperAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const baseAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const wrapperAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
   const hostEl = baseEl.host || baseEl;
   const wrapperEl = baseEl.querySelector('.toast-wrapper');
   const bottom = `calc(8px + var(--ion-safe-area-bottom, 0px))`;
@@ -124,8 +124,8 @@ const mdEnterAnimation = (baseEl, position) => {
  * md Toast Leave Animation
  */
 const mdLeaveAnimation = (baseEl) => {
-  const baseAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
-  const wrapperAnimation = Object(_animation_096c6391_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const baseAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
+  const wrapperAnimation = Object(_animation_822d986b_js__WEBPACK_IMPORTED_MODULE_5__["c"])();
   const hostEl = baseEl.host || baseEl;
   const wrapperEl = baseEl.querySelector('.toast-wrapper');
   wrapperAnimation
@@ -175,20 +175,20 @@ const Toast = class {
     this.animated = true;
     this.dispatchCancelHandler = (ev) => {
       const role = ev.detail.role;
-      if (Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["i"])(role)) {
+      if (Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["i"])(role)) {
         const cancelButton = this.getButtons().find(b => b.role === 'cancel');
         this.callButtonHandler(cancelButton);
       }
     };
   }
   connectedCallback() {
-    Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["e"])(this.el);
+    Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["e"])(this.el);
   }
   /**
    * Present the toast overlay after it has been created.
    */
   async present() {
-    await Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position);
+    await Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position);
     if (this.duration > 0) {
       this.durationTimeout = setTimeout(() => this.dismiss(undefined, 'timeout'), this.duration);
     }
@@ -206,19 +206,19 @@ const Toast = class {
     if (this.durationTimeout) {
       clearTimeout(this.durationTimeout);
     }
-    return Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this, data, role, 'toastLeave', iosLeaveAnimation, mdLeaveAnimation, this.position);
+    return Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this, data, role, 'toastLeave', iosLeaveAnimation, mdLeaveAnimation, this.position);
   }
   /**
    * Returns a promise that resolves when the toast did dismiss.
    */
   onDidDismiss() {
-    return Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["g"])(this.el, 'ionToastDidDismiss');
+    return Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["g"])(this.el, 'ionToastDidDismiss');
   }
   /**
    * Returns a promise that resolves when the toast will dismiss.
    */
   onWillDismiss() {
-    return Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["g"])(this.el, 'ionToastWillDismiss');
+    return Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["g"])(this.el, 'ionToastWillDismiss');
   }
   getButtons() {
     const buttons = this.buttons
@@ -232,7 +232,7 @@ const Toast = class {
   }
   async buttonClick(button) {
     const role = button.role;
-    if (Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["i"])(role)) {
+    if (Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["i"])(role)) {
       return this.dismiss(undefined, role);
     }
     const shouldDismiss = await this.callButtonHandler(button);
@@ -246,7 +246,7 @@ const Toast = class {
       // a handler has been provided, execute it
       // pass the handler the values from the inputs
       try {
-        const rtn = await Object(_overlays_e9ccff30_js__WEBPACK_IMPORTED_MODULE_2__["s"])(button.handler);
+        const rtn = await Object(_overlays_a62f858b_js__WEBPACK_IMPORTED_MODULE_2__["s"])(button.handler);
         if (rtn === false) {
           // if the return value of the handler is false then do not dismiss
           return false;

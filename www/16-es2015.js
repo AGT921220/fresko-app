@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-7a8b7a1c.js */ "./node_modules/@ionic/core/dist/esm/index-7a8b7a1c.js");
 /* harmony import */ var _ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-63a97a32.js */ "./node_modules/@ionic/core/dist/esm/ionic-global-63a97a32.js");
 /* harmony import */ var _theme_ff3fc52f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme-ff3fc52f.js */ "./node_modules/@ionic/core/dist/esm/theme-ff3fc52f.js");
-/* harmony import */ var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-dd7e4b7b.js */ "./node_modules/@ionic/core/dist/esm/helpers-dd7e4b7b.js");
+/* harmony import */ var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-1457892a.js */ "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
 
 
 
@@ -94,7 +94,7 @@ const ItemOptions = class {
   }
   render() {
     const mode = Object(_ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
-    const isEnd = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_3__["m"])(this.side);
+    const isEnd = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_3__["n"])(this.side);
     return (Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: {
         [mode]: true,
         // Used internally for styling
@@ -203,7 +203,7 @@ const ItemSliding = class {
       side = (optionsToOpen === this.leftOptions) ? 'start' : 'end';
     }
     // In RTL we want to switch the sides
-    side = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_3__["m"])(side) ? 'end' : 'start';
+    side = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_3__["n"])(side) ? 'end' : 'start';
     const isStartOpen = this.openAmount < 0;
     const isEndOpen = this.openAmount > 0;
     /**
@@ -273,7 +273,7 @@ const ItemSliding = class {
        * to be ready before we set `this.sides` and `this.optsDirty`.
        */
       const option = (item.componentOnReady !== undefined) ? await item.componentOnReady() : item;
-      const side = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_3__["m"])(option.side) ? 'end' : 'start';
+      const side = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_3__["n"])(option.side) ? 'end' : 'start';
       if (side === 'start') {
         this.leftOptions = option;
         sides |= 1 /* Start */;

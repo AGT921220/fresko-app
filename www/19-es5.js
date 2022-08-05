@@ -1,5 +1,7 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return generator._invoke = function (innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; }(innerFn, self, context), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == typeof value && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; this._invoke = function (method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (object) { var keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -8,11 +10,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[19], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-menu_3.entry.js": function node_modulesIonicCoreDistEsmIonMenu_3EntryJs(module, __webpack_exports__, __webpack_require__) {
+  "./node_modules/@ionic/core/dist/esm/ion-menu_3.entry.js":
+  /*!***************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-menu_3.entry.js ***!
+    \***************************************************************/
+
+  /*! exports provided: ion_menu, ion_menu_button, ion_menu_toggle */
+
+  /***/
+  function node_modulesIonicCoreDistEsmIonMenu_3EntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -61,15 +71,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./helpers-dd7e4b7b.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-dd7e4b7b.js");
+    var _helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./helpers-1457892a.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-1457892a.js");
     /* harmony import */
 
 
-    var _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./index-0d58a5bf.js */
-    "./node_modules/@ionic/core/dist/esm/index-0d58a5bf.js");
+    var _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./index-1e16c550.js */
+    "./node_modules/@ionic/core/dist/esm/index-1e16c550.js");
     /* harmony import */
 
 
@@ -85,9 +95,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _animation_096c6391_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
-    /*! ./animation-096c6391.js */
-    "./node_modules/@ionic/core/dist/esm/animation-096c6391.js");
+    var _animation_822d986b_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ./animation-822d986b.js */
+    "./node_modules/@ionic/core/dist/esm/animation-822d986b.js");
 
     var menuIosCss = ":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color, #fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,  0,  0);transform:translate3d(-9999px,  0,  0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{left:unset;right:unset;left:auto;right:0}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{-webkit-transform:translate3d(calc(-1 * -9999px),  0,  0);transform:translate3d(calc(-1 * -9999px),  0,  0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto;}ion-backdrop{display:none;opacity:0.01;z-index:-1}@media (max-width: 340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0)}:host(.menu-type-overlay){z-index:1000}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible){width:var(--width);min-width:var(--min-width);max-width:var(--max-width)}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none !important;transform:none !important;-webkit-box-shadow:none !important;box-shadow:none !important}:host(.menu-pane-visible) ion-backdrop{display:hidden !important;}:host(.menu-type-push){z-index:1000}:host(.menu-type-push) .show-backdrop{display:block}";
     var menuMdCss = ":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color, #fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,  0,  0);transform:translate3d(-9999px,  0,  0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{left:unset;right:unset;left:auto;right:0}[dir=rtl] .menu-inner,:host-context([dir=rtl]) .menu-inner{-webkit-transform:translate3d(calc(-1 * -9999px),  0,  0);transform:translate3d(calc(-1 * -9999px),  0,  0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto;}ion-backdrop{display:none;opacity:0.01;z-index:-1}@media (max-width: 340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translate3d(0,  0,  0);transform:translate3d(0,  0,  0)}:host(.menu-type-overlay){z-index:1000}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible){width:var(--width);min-width:var(--min-width);max-width:var(--max-width)}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none !important;transform:none !important;-webkit-box-shadow:none !important;box-shadow:none !important}:host(.menu-pane-visible) ion-backdrop{display:hidden !important;}:host(.menu-type-overlay) .menu-inner{-webkit-box-shadow:4px 0px 16px rgba(0, 0, 0, 0.18);box-shadow:4px 0px 16px rgba(0, 0, 0, 0.18)}";
@@ -95,9 +105,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var mdEasing = 'cubic-bezier(0.0,0.0,0.2,1)';
     var iosEasingReverse = 'cubic-bezier(1, 0, 0.68, 0.28)';
     var mdEasingReverse = 'cubic-bezier(0.4, 0, 0.6, 1)';
+    var focusableQueryString = '[tabindex]:not([tabindex^="-"]), input:not([type=hidden]):not([tabindex^="-"]), textarea:not([tabindex^="-"]), button:not([tabindex^="-"]), select:not([tabindex^="-"]), .ion-focusable:not([tabindex^="-"])';
 
     var Menu = /*#__PURE__*/function () {
       function Menu(hostRef) {
+        var _this = this;
+
         _classCallCheck(this, Menu);
 
         Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
@@ -112,6 +125,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         });
         this.isAnimating = false;
         this._isOpen = false;
+        this.inheritedAttributes = {};
+
+        this.handleFocus = function (ev) {
+          return _this.trapKeyboardFocus(ev, document);
+        };
+
         this.isPaneVisible = false;
         this.isEndSide = false;
         /**
@@ -170,7 +189,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "sideChanged",
         value: function sideChanged() {
-          this.isEndSide = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["m"])(this.side);
+          this.isEndSide = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["n"])(this.side);
         }
       }, {
         key: "swipeGestureChanged",
@@ -180,11 +199,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "connectedCallback",
         value: function () {
-          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this = this;
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+            var _this2 = this;
 
             var el, parent, content;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
+            return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
@@ -217,7 +236,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     this.typeChanged(this.type, undefined);
                     this.sideChanged(); // register this menu with the app's menu controller
 
-                    _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"]._register(this);
+                    _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"]._register(this);
 
                     _context.next = 15;
                     return Promise.resolve().then(__webpack_require__.bind(null,
@@ -232,19 +251,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                       threshold: 10,
                       blurOnStart: true,
                       canStart: function canStart(ev) {
-                        return _this.canStart(ev);
+                        return _this2.canStart(ev);
                       },
                       onWillStart: function onWillStart() {
-                        return _this.onWillStart();
+                        return _this2.onWillStart();
                       },
                       onStart: function onStart() {
-                        return _this.onStart();
+                        return _this2.onStart();
                       },
                       onMove: function onMove(ev) {
-                        return _this.onMove(ev);
+                        return _this2.onMove(ev);
                       },
                       onEnd: function onEnd(ev) {
-                        return _this.onEnd(ev);
+                        return _this2.onEnd(ev);
                       }
                     });
                     this.updateState();
@@ -264,10 +283,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return connectedCallback;
         }()
       }, {
+        key: "componentWillLoad",
+        value: function componentWillLoad() {
+          this.inheritedAttributes = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["i"])(this.el);
+        }
+      }, {
         key: "componentDidLoad",
         value: function () {
-          var _componentDidLoad = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          var _componentDidLoad = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+            return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
@@ -296,7 +320,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function disconnectedCallback() {
           this.blocker.destroy();
 
-          _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"]._unregister(this);
+          _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"]._unregister(this);
 
           if (this.animation) {
             this.animation.destroy();
@@ -327,6 +351,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               ev.stopPropagation();
               this.close();
             }
+          }
+        }
+      }, {
+        key: "onKeydown",
+        value: function onKeydown(ev) {
+          if (ev.key === 'Escape') {
+            this.close();
           }
         }
         /**
@@ -392,15 +423,81 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "setOpen",
         value: function setOpen(shouldOpen) {
           var animated = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-          return _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"]._setOpen(this, shouldOpen, animated);
+          return _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"]._setOpen(this, shouldOpen, animated);
+        }
+      }, {
+        key: "focusFirstDescendant",
+        value: function focusFirstDescendant() {
+          var el = this.el;
+          var firstInput = el.querySelector(focusableQueryString);
+
+          if (firstInput) {
+            firstInput.focus();
+          } else {
+            el.focus();
+          }
+        }
+      }, {
+        key: "focusLastDescendant",
+        value: function focusLastDescendant() {
+          var el = this.el;
+          var inputs = Array.from(el.querySelectorAll(focusableQueryString));
+          var lastInput = inputs.length > 0 ? inputs[inputs.length - 1] : null;
+
+          if (lastInput) {
+            lastInput.focus();
+          } else {
+            el.focus();
+          }
+        }
+      }, {
+        key: "trapKeyboardFocus",
+        value: function trapKeyboardFocus(ev, doc) {
+          var target = ev.target;
+
+          if (!target) {
+            return;
+          }
+          /**
+           * If the target is inside the menu contents, let the browser
+           * focus as normal and keep a log of the last focused element.
+           */
+
+
+          if (this.el.contains(target)) {
+            this.lastFocus = target;
+          } else {
+            /**
+             * Otherwise, we are about to have focus go out of the menu.
+             * Wrap the focus to either the first or last element.
+             */
+
+            /**
+             * Once we call `focusFirstDescendant`, another focus event
+             * will fire, which will cause `lastFocus` to be updated
+             * before we can run the code after that. We cache the value
+             * here to avoid that.
+             */
+            this.focusFirstDescendant();
+            /**
+             * If the cached last focused element is the same as the now-
+             * active element, that means the user was on the first element
+             * already and pressed Shift + Tab, so we need to wrap to the
+             * last descendant.
+             */
+
+            if (this.lastFocus === doc.activeElement) {
+              this.focusLastDescendant();
+            }
+          }
         }
       }, {
         key: "_setOpen",
         value: function () {
-          var _setOpen2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(shouldOpen) {
+          var _setOpen2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(shouldOpen) {
             var animated,
                 _args3 = arguments;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
@@ -443,9 +540,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "loadAnimation",
         value: function () {
-          var _loadAnimation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          var _loadAnimation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
             var width;
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) {
                 switch (_context4.prev = _context4.next) {
                   case 0:
@@ -470,7 +567,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
                     _context4.next = 7;
-                    return _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"]._createAnimation(this.type, this);
+                    return _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"]._createAnimation(this.type, this);
 
                   case 7:
                     this.animation = _context4.sent;
@@ -498,9 +595,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "startAnimation",
         value: function () {
-          var _startAnimation = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(shouldOpen, animated) {
+          var _startAnimation = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(shouldOpen, animated) {
             var isReversed, mode, easing, easingReverse, ani;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) {
                 switch (_context5.prev = _context5.next) {
                   case 0:
@@ -567,7 +664,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (this._isOpen) {
             return true; // TODO error
-          } else if (_index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"]._getOpenSync()) {
+          } else if (_index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"]._getOpenSync()) {
             return false;
           }
 
@@ -583,7 +680,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "onStart",
         value: function onStart() {
           if (!this.isAnimating || !this.animation) {
-            Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(false, 'isAnimating has to be true');
+            Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(false, 'isAnimating has to be true');
             return;
           } // the cloned animation should not use an easing curve during seek
 
@@ -594,7 +691,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "onMove",
         value: function onMove(detail) {
           if (!this.isAnimating || !this.animation) {
-            Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(false, 'isAnimating has to be true');
+            Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(false, 'isAnimating has to be true');
             return;
           }
 
@@ -605,10 +702,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "onEnd",
         value: function onEnd(detail) {
-          var _this2 = this;
+          var _this3 = this;
 
           if (!this.isAnimating || !this.animation) {
-            Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(false, 'isAnimating has to be true');
+            Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(false, 'isAnimating has to be true');
             return;
           }
 
@@ -648,10 +745,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
            * in terms of a linear curve.
            */
 
-          newStepValue += Object(_cubic_bezier_eea9a7a9_js__WEBPACK_IMPORTED_MODULE_2__["g"])([0, 0], [0.4, 0], [0.6, 1], [1, 1], Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["j"])(0, adjustedStepValue, 0.9999))[0] || 0;
+          newStepValue += Object(_cubic_bezier_eea9a7a9_js__WEBPACK_IMPORTED_MODULE_2__["g"])([0, 0], [0.4, 0], [0.6, 1], [1, 1], Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["k"])(0, adjustedStepValue, 0.9999))[0] || 0;
           var playTo = this._isOpen ? !shouldComplete : shouldComplete;
           this.animation.easing('cubic-bezier(0.4, 0.0, 0.6, 1)').onFinish(function () {
-            return _this2.afterAnimation(shouldOpen);
+            return _this3.afterAnimation(shouldOpen);
           }, {
             oneTimeCallback: true
           }).progressEnd(playTo ? 1 : 0, this._isOpen ? 1 - newStepValue : newStepValue, 300);
@@ -659,10 +756,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "beforeAnimation",
         value: function beforeAnimation(shouldOpen) {
-          Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(!this.isAnimating, '_before() should not be called while animating'); // this places the menu into the correct location before it animates in
+          Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(!this.isAnimating, '_before() should not be called while animating'); // this places the menu into the correct location before it animates in
           // this css class doesn't actually kick off any animations
 
           this.el.classList.add(SHOW_MENU);
+          /**
+           * We add a tabindex here so that focus trapping
+           * still works even if the menu does not have
+           * any focusable elements slotted inside. The
+           * focus trapping utility will fallback to focusing
+           * the menu so focus does not leave when the menu
+           * is open.
+           */
+
+          this.el.setAttribute('tabindex', '0');
 
           if (this.backdropEl) {
             this.backdropEl.classList.add(SHOW_BACKDROP);
@@ -680,7 +787,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "afterAnimation",
         value: function afterAnimation(isOpen) {
-          Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(this.isAnimating, '_before() should be called while animating'); // keep opening/closing the menu disabled for a touch more yet
+          Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(this.isAnimating, '_before() should be called while animating'); // keep opening/closing the menu disabled for a touch more yet
           // only add listeners/css if it's enabled and isOpen
           // and only remove listeners/css if it's not open
           // emit opened/closed events
@@ -693,19 +800,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           if (isOpen) {
-            // add css class
+            // add css class and hide content behind menu from screen readers
             if (this.contentEl) {
               this.contentEl.classList.add(MENU_CONTENT_OPEN);
+              /**
+               * When the menu is open and overlaying the main
+               * content, the main content should not be announced
+               * by the screenreader as the menu is the main
+               * focus. This is useful with screenreaders that have
+               * "read from top" gestures that read the entire
+               * page from top to bottom when activated.
+               */
+
+              this.contentEl.setAttribute('aria-hidden', 'true');
             } // emit open event
 
 
-            this.ionDidOpen.emit();
+            this.ionDidOpen.emit(); // focus menu content for screen readers
+
+            if (this.menuInnerEl) {
+              this.focusFirstDescendant();
+            } // setup focus trapping
+
+
+            document.addEventListener('focus', this.handleFocus, true);
           } else {
-            // remove css classes
+            // remove css classes and unhide content from screen readers
             this.el.classList.remove(SHOW_MENU);
+            /**
+             * Remove tabindex from the menu component
+             * so that is cannot be tabbed to.
+             */
+
+            this.el.removeAttribute('tabindex');
 
             if (this.contentEl) {
               this.contentEl.classList.remove(MENU_CONTENT_OPEN);
+              /**
+               * Remove aria-hidden so screen readers
+               * can announce the main content again
+               * now that the menu is not the main focus.
+               */
+
+              this.contentEl.removeAttribute('aria-hidden');
             }
 
             if (this.backdropEl) {
@@ -717,7 +854,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             } // emit close event
 
 
-            this.ionDidClose.emit();
+            this.ionDidClose.emit(); // undo focus trapping so multiple menus don't collide
+
+            document.removeEventListener('focus', this.handleFocus, true);
           }
         }
       }, {
@@ -736,15 +875,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           if (!this.disabled) {
-            _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"]._setActiveMenu(this);
+            _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"]._setActiveMenu(this);
           }
 
-          Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(!this.isAnimating, 'can not be animating');
+          Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(!this.isAnimating, 'can not be animating');
         }
       }, {
         key: "forceClosing",
         value: function forceClosing() {
-          Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["l"])(this._isOpen, 'menu cannot be closed');
+          Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["m"])(this._isOpen, 'menu cannot be closed');
           this.isAnimating = true;
           var ani = this.animation.direction('reverse');
           ani.play({
@@ -756,25 +895,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "render",
         value: function render() {
           var _class,
-              _this3 = this;
+              _this4 = this;
 
           var isEndSide = this.isEndSide,
               type = this.type,
               disabled = this.disabled,
-              isPaneVisible = this.isPaneVisible;
+              isPaneVisible = this.isPaneVisible,
+              inheritedAttributes = this.inheritedAttributes;
           var mode = Object(_ionic_global_63a97a32_js__WEBPACK_IMPORTED_MODULE_1__["b"])(this);
           return Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
             role: "navigation",
+            "aria-label": inheritedAttributes['aria-label'] || 'menu',
             "class": (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "menu-type-".concat(type), true), _defineProperty(_class, 'menu-enabled', !disabled), _defineProperty(_class, 'menu-side-end', isEndSide), _defineProperty(_class, 'menu-side-start', !isEndSide), _defineProperty(_class, 'menu-pane-visible', isPaneVisible), _class)
           }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
             "class": "menu-inner",
             part: "container",
             ref: function ref(el) {
-              return _this3.menuInnerEl = el;
+              return _this4.menuInnerEl = el;
             }
           }, Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_index_7a8b7a1c_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
             ref: function ref(el) {
-              return _this3.backdropEl = el;
+              return _this4.backdropEl = el;
             },
             "class": "menu-backdrop",
             tappable: false,
@@ -823,14 +964,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }; // Given a menu, return whether or not the menu toggle should be visible
 
     var updateVisibility = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(menu) {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(menu) {
         var menuEl;
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
                 _context6.next = 2;
-                return _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
+                return _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
 
               case 2:
                 menuEl = _context6.sent;
@@ -868,7 +1009,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var MenuButton = /*#__PURE__*/function () {
       function MenuButton(hostRef) {
-        var _this4 = this;
+        var _this5 = this;
 
         _classCallCheck(this, MenuButton);
 
@@ -890,12 +1031,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
          */
 
         this.type = 'button';
-        this.onClick = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
-          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+        this.onClick = /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7() {
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
-                  return _context7.abrupt("return", _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(_this4.menu));
+                  return _context7.abrupt("return", _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(_this5.menu));
 
                 case 1:
                 case "end":
@@ -909,7 +1050,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(MenuButton, [{
         key: "componentWillLoad",
         value: function componentWillLoad() {
-          this.inheritedAttributes = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_4__["i"])(this.el, ['aria-label']);
+          this.inheritedAttributes = Object(_helpers_1457892a_js__WEBPACK_IMPORTED_MODULE_4__["i"])(this.el);
         }
       }, {
         key: "componentDidLoad",
@@ -919,8 +1060,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "visibilityChanged",
         value: function () {
-          var _visibilityChanged = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          var _visibilityChanged = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+            return _regeneratorRuntime().wrap(function _callee8$(_context8) {
               while (1) {
                 switch (_context8.prev = _context8.next) {
                   case 0:
@@ -1001,7 +1142,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var MenuToggle = /*#__PURE__*/function () {
       function MenuToggle(hostRef) {
-        var _this5 = this;
+        var _this6 = this;
 
         _classCallCheck(this, MenuToggle);
 
@@ -1017,7 +1158,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.autoHide = true;
 
         this.onClick = function () {
-          return _index_0d58a5bf_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(_this5.menu);
+          return _index_1e16c550_js__WEBPACK_IMPORTED_MODULE_5__["m"].toggle(_this6.menu);
         };
       }
 
@@ -1029,8 +1170,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "visibilityChanged",
         value: function () {
-          var _visibilityChanged2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
-            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+          var _visibilityChanged2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+            return _regeneratorRuntime().wrap(function _callee9$(_context9) {
               while (1) {
                 switch (_context9.prev = _context9.next) {
                   case 0:
