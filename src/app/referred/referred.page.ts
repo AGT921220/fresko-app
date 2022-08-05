@@ -48,6 +48,7 @@ export class ReferredPage {
           console.log('Respuesta', resp);
         });
         await this.obtenerInformacionUser();
+//        await this.getReferredUsers()
       }else{
         this.router.navigate(['home']);
       }
