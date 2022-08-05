@@ -1,0 +1,19 @@
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+
+
+COMPILAR
+
+
+ cordova platform add android --save 
+ ionic integrations enable cordova --add
+   cordova build android 
+
+
+cordova requirements android --verbose
+
+
+
+java -version
+sudo update-alternatives --config javac
