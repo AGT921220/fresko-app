@@ -10,7 +10,7 @@ if ($method == "OPTIONS") {
     header("HTTP/1.1 200 OK");
     die();
 }
-
+define('REFERRED_COMISSION_PERCENTAJE', 0.05);
 define("QUERY_INSERT_USER", "INSERT INTO fressko_user (name, email, telephone, password, street, streetnumber, interior, colony, reference, activated) VALUES (?,?,?,?,?,?,?,?,?,?)");
 define("QUERY_LOGIN", "SELECT iduser,password, activated FROM fressko_user WHERE telephone=?");
 define("QUERY_SELECT_PRODUCTS", "SELECT * FROM fressko_product WHERE idcategory=?");
@@ -82,6 +82,11 @@ define("VALIDATE_CLIENTE", "SELECT iduser FROM fressko_user WHERE telephone = ?"
 define("QUERY_VERIFY_REFERRED", "SELECT * FROM fressko_user WHERE activated = 1 AND telephone = ?");
 define("QUERY_CHECK_REFERENCED", "SELECT * FROM fressko_referidos WHERE referenciado_id = ?");
 define("INSERT_REFERENCED", "INSERT INTO fressko_referidos (referido_id, referenciado_id) VALUES (?,?)");
+define("QUERY_SELECT_REFERRED_ORDERS_BY_DATE", "SELECT fressko_order.*, fressko_user.name,fressko_user.street,fressko_user.streetnumber,fressko_user.colony,fressko_user.telephone,fressko_user .iduser,fu_reff .name as referido_name,fu_reff.iduser as referido_id, fu_reff.is_promotor as referido_promotor  FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser JOIN fressko_referidos fr ON fr.referenciado_id  =fressko_order.iduser JOIN fressko_user fu_reff ON fu_reff.iduser = fr .referido_id WHERE timestamp>? AND timestamp<=?  ORDER BY fressko_order.idorder DESC");
+define("QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID", "SELECT * from fressko_referred_commissions where order_id = ?");
+define("QUERY_INSERT_REFERRED_COMISSION", "INSERT INTO fressko_referred_commissions (order_id,referido_id,referenciado_id,commission,created_at,validity_at) values (?,?,?,?,?,?)");
+define("QUERY_UPDATE_REFERRED_COMISSION", "UPDATE fressko_referred_commissions set commission=?, created_at=?, validity_at=? where order_id=?");
+
 
 // $dbConnection = new PDO('mysql:host=198.71.235.14;dbname=fressko', 'rbedev', '651_LCD_573_1850_933_e@rbe');
 // $dbConnection = new PDO('mysql:host=localhost;dbname=fressko', 'rbedev', '651_LCD_573_1850_933_e@rbe');

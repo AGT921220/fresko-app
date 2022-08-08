@@ -6,9 +6,9 @@ export PATH=$PATH:$ANDROID_HOME/tools
 COMPILAR
 
 
- cordova platform add android --save 
- ionic integrations enable cordova --add
-   cordova build android 
+ionic cordova platform add android --save 
+ionic integrations enable cordova --add
+ionic cordova build android 
 
 
 cordova requirements android --verbose
