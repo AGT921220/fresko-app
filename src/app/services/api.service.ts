@@ -120,5 +120,7 @@ export class ApiService {
 
   }
 
-
+  getReferredCommissionsByUserId(userId) {
+    return this.http.get(this.HOST + 'getReferredCommissions.php?user_id=' + userId);
+  }
 }

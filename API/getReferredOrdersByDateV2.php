@@ -25,7 +25,8 @@ if(isset($_POST["token"])
     $orderToAdd["referido_id"] = $order["referido_id"];
     $orderToAdd["referido_promotor"] = $order["referido_promotor"];
 
-    
+    $orderToAdd["total_commissions"] = $order["total_commissions"];
+        
   	$orderToAdd["timestamp"] = explode(" = ",$order["timestamp"])[1];
     $orderToAdd["name"] = $order["name"];
     $orderToAdd["street"] = $order["street"];

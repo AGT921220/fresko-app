@@ -16,8 +16,8 @@
 
 
   <div style="text-align:center">
-    <h3 >Referidos Totales</h3>
-    <p style="color:#00b050; font-size: 1.5em;">7</p>
+    <h3>Referidos</h3>
+    <p style="color:#00b050; font-size: 1.5em;">{{referreds}}</p>
   </div>
 
 
@@ -30,16 +30,39 @@
     padding: 0.5em;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.5em;">$145</p>
+    font-size: 1.5em;">${{balance}}</p>
   </div>
 
 
-  <div style="text-align:center">
+
+  <table id="commissions" *ngIf="referredCommissions!=0">
+    <thead>
+      <tr style="justify-content: center; text-align: center;"> 
+        <th>#Orden</th>
+        <th>Usuario</th>
+        <th>Monto</th>
+        <th>Expiración</th>
+
+      </tr>
+    </thead>
+    <tbody style="justify-content: center; text-align: center;">
+      <tr *ngFor="let item of referredCommissions" style="justify-content: center; text-align: center;">
+        <td> {{item.order_id}} </td>
+        <th> {{item.referenciado_id}} </th>
+        <th> ${{item.commission}} MXN</th>
+        <th> {{(item.validity_at)?item.validity_at:'No Expira'}} </th>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <!-- <div style="text-align:center">
     <h3>Vigencia</h3>
     <p style="color:#00b050;
 
     font-size: 1.5em;">12/02/23</p>
-  </div>
+  </div> -->
 
 </ion-content>
 <ion-footer>

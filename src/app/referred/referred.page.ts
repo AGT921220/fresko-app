@@ -14,6 +14,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 export class ReferredPage {
   apiService: ApiService;
   router: Router;
+  isLoading = false;
+  referredCommissions: any = 0;
+  referreds: Number = 0;
+  balance: Number = 0;
   backButtonSubscription;
   sliderOptions = {
     zoom: false,
@@ -28,28 +32,33 @@ export class ReferredPage {
     private platform: Platform,
     private g: Globals,
     public toastController: ToastController,
-    public global:GlobalService,
-    private iab:InAppBrowser
+    public global: GlobalService,
+    private iab: InAppBrowser
   ) {
     console.log('User', this.global.user_info);
     this.apiService = apiService;
     this.router = router;
   }
 
-  async logout(){
+  async logout() {
     await this.global.logout();
   }
-  
+
   async ionViewWillEnter() {
     console.log("User", this.global.user_info);
-    if(this.global.user_info != null){
-      if(this.global.user_info.iduser){
-        await this.apiService.updateDevice(this.global.user_info.iduser, this.global.device_id).toPromise().then((resp) =>{
+
+    if (this.global.user_info != null) {
+      if (this.global.user_info.iduser) {
+        await this.global.showLoading("Cargando referidos..");
+
+        await this.apiService.updateDevice(this.global.user_info.iduser, this.global.device_id).toPromise().then((resp) => {
           console.log('Respuesta', resp);
         });
         await this.obtenerInformacionUser();
-//        await this.getReferredUsers()
-      }else{
+        await this.getReferredCommissions()
+        this.global.dismissLoading();
+
+      } else {
         this.router.navigate(['home']);
       }
     }
@@ -62,9 +71,9 @@ export class ReferredPage {
     // this.backButtonSubscription.unsubscribe();
   }
 
-  async obtenerInformacionUser(){
-    await this.apiService.getUser(this.global.user_info.iduser).toPromise().then((response:any) =>{
-      if(response.success){
+  async obtenerInformacionUser() {
+    await this.apiService.getUser(this.global.user_info.iduser).toPromise().then((response: any) => {
+      if (response.success) {
         this.global.user_info = response.data;
         this.global.user_info.promotions_discount = response.promotions_discount;
         this.global.user_info.promotions_freedelivery = response.promotions_freedelivery;
@@ -72,50 +81,50 @@ export class ReferredPage {
         this.global.user_info.anuncios = response.anuncios;
         this.global.user_info.paquetes = response.paquetes;
         for (var i = 0; i < this.global.user_info.promotions_discount.length; i++) {
-          this.global.user_info.promotions_discount[i].url = "data:image/png;base64," +  this.global.user_info.promotions_discount[i].url;
+          this.global.user_info.promotions_discount[i].url = "data:image/png;base64," + this.global.user_info.promotions_discount[i].url;
           if (this.global.user_info.promotions_discount[i].promotions_carrousel == 1) {
             this.global.promotions_carrousel.push(this.global.user_info.promotions_discount[i]);
           }
         }
         for (var i = 0; i < this.global.user_info.promotions_freedelivery.length; i++) {
-          this.global.user_info.promotions_freedelivery[i].url = "data:image/png;base64," +  this.global.user_info.promotions_freedelivery[i].url;
+          this.global.user_info.promotions_freedelivery[i].url = "data:image/png;base64," + this.global.user_info.promotions_freedelivery[i].url;
           if (this.global.user_info.promotions_freedelivery[i].promotions_carrousel == 1) {
             this.global.promotions_carrousel.push(this.global.user_info.promotions_freedelivery[i]);
           }
         }
         for (var i = 0; i < this.global.user_info.promotions_freeproduct.length; i++) {
-          this.global.user_info.promotions_freeproduct[i].url = "data:image/png;base64," +  this.global.user_info.promotions_freeproduct[i].url;
+          this.global.user_info.promotions_freeproduct[i].url = "data:image/png;base64," + this.global.user_info.promotions_freeproduct[i].url;
           if (this.global.user_info.promotions_freeproduct[i].promotions_carrousel == 1) {
             this.global.promotions_carrousel.push(this.global.user_info.promotions_freeproduct[i]);
           }
         }
         for (var i = 0; i < this.global.user_info.anuncios.length; i++) {
-          this.global.user_info.anuncios[i].imagen = "data:image/png;base64," +  this.global.user_info.anuncios[i].imagen;
+          this.global.user_info.anuncios[i].imagen = "data:image/png;base64," + this.global.user_info.anuncios[i].imagen;
         }
 
         for (var i = 0; i < this.global.user_info.paquetes.length; i++) {
-          this.global.user_info.paquetes[i].imagen = "data:image/png;base64," +  this.global.user_info.paquetes[i].url;
+          this.global.user_info.paquetes[i].imagen = "data:image/png;base64," + this.global.user_info.paquetes[i].url;
         }
         this.global.setItemStorage('user_info', JSON.stringify(this.global.user_info));
       }
-    }).catch(error =>{
+    }).catch(error => {
       console.error('Error', error);
     });
   }
 
-  verProductos(id:any) {
-    this.router.navigate(['/tabs2/products', id ]);
+  verProductos(id: any) {
+    this.router.navigate(['/tabs2/products', id]);
   }
 
   shoppingList() {
     this.router.navigate(['finish-order']);
   }
 
-  verPromosDisponibles(){
+  verPromosDisponibles() {
     this.router.navigate(['promos-disponibles']);
   }
 
-  verPaquetesDisponibles(){
+  verPaquetesDisponibles() {
     this.router.navigate(['paquetes-disponibles']);
   }
 
@@ -128,11 +137,37 @@ export class ReferredPage {
   }
 
 
-  openWhatsapp(){
+  openWhatsapp() {
     this.iab.create('http://api.whatsapp.com/send?phone=' + this.global.getAppConfigFlag("WHATSAPP"), "_system");
   }
 
-  verPerfil(){
-    
+  verPerfil() {
+
+  }
+
+
+  async getReferredCommissions() {
+    this.apiService
+      .getReferredCommissionsByUserId(this.global.user_info.iduser)
+      .subscribe((response: any) => {
+        let commissions = []
+        let total = 0
+        this.referreds = response.referreds.total
+        if (response.commissions.length >= 1) {
+          let commisionsResponse: any[]  = response.commissions
+          Object.entries(commisionsResponse).forEach(([key, value]) => {
+            commissions.push(value)
+            console.log(value)
+            total = total + parseFloat(value.commission)
+          });
+
+          this.referredCommissions = commissions
+
+        }
+
+        this.balance = total
+        console.log(total)
+      });
+
   }
 }
