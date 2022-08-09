@@ -1522,6 +1522,9 @@ let ApiService = class ApiService {
         const httpParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('referido_id', referred_code).set('referenciado_id', user_id);
         return this.http.post(this.HOST + 'registerReferredCode.php', httpParams);
     }
+    getReferredCommissionsByUserId(userId) {
+        return this.http.get(this.HOST + 'getReferredCommissions.php?user_id=' + userId);
+    }
 };
 ApiService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }

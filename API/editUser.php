@@ -22,15 +22,16 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['telephone']
     $colony = $_POST['colony'];
     $reference = $_POST['reference'];
     $activated = $_POST['activated'];
+    $isPromotor = $_POST['is_promotor'];
 
   	$success = false;
   	if(strlen($password) > 0){
       $password = password_hash($password, PASSWORD_DEFAULT);
       $stmt = $dbConnection->prepare(QUERY_EDIT_USER_PASSWORD);
-      $success = $stmt->execute([$name, $email, $telephone, $password,$street,$streetnumber,$interior,$colony,$reference, intval($activated), intval($iduser)]);
+      $success = $stmt->execute([$name, $email, $telephone, $password,$street,$streetnumber,$interior,$colony,$reference, intval($activated),intval($isPromotor), intval($iduser)]);
     }else{
       $stmt = $dbConnection->prepare(QUERY_EDIT_USER);
-      $success = $stmt->execute([$name, $email, $telephone,$street,$streetnumber,$interior,$colony,$reference, intval($activated), intval($iduser)]);
+      $success = $stmt->execute([$name, $email, $telephone,$street,$streetnumber,$interior,$colony,$reference, intval($activated), intval($isPromotor), intval($iduser)]);
     }
 	
   if($success){

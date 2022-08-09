@@ -2225,6 +2225,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var httpParams = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpParams"]().set('referido_id', referred_code).set('referenciado_id', user_id);
           return this.http.post(this.HOST + 'registerReferredCode.php', httpParams);
         }
+      }, {
+        key: "getReferredCommissionsByUserId",
+        value: function getReferredCommissionsByUserId(userId) {
+          return this.http.get(this.HOST + 'getReferredCommissions.php?user_id=' + userId);
+        }
       }]);
 
       return ApiService;

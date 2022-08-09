@@ -20,8 +20,8 @@ define("QUERY_INSERT_ORDER_CONTENT", "INSERT INTO fressko_order_content (idorder
 define("QUERY_SELECT_ALL_USERS", "SELECT * FROM fressko_user");
 define("QUERY_SELECT_ALL_USERS_BY_NAME", "SELECT * FROM fressko_user WHERE name LIKE ? ORDER BY name ASC");
 define("QUERY_SELECT_USER_BY_ID", "SELECT * FROM fressko_user WHERE iduser=?");
-define("QUERY_EDIT_USER", "UPDATE fressko_user SET name=?, email=?, telephone=?,street=?, streetnumber=?, interior=?, colony=?, reference=?, activated=? WHERE iduser=?");
-define("QUERY_EDIT_USER_PASSWORD", "UPDATE fressko_user SET name=?, email=?, telephone=?,  password=? ,street=?, streetnumber=?, interior=?, colony=?, reference=?,activated=? WHERE iduser=?");
+define("QUERY_EDIT_USER", "UPDATE fressko_user SET name=?, email=?, telephone=?,street=?, streetnumber=?, interior=?, colony=?, reference=?, activated=?, is_promotor=? WHERE iduser=?");
+define("QUERY_EDIT_USER_PASSWORD", "UPDATE fressko_user SET name=?, email=?, telephone=?,  password=? ,street=?, streetnumber=?, interior=?, colony=?, reference=?,activated=?, is_promotor=? WHERE iduser=?");
 define("QUERY_INSERT_PRODUCT", "INSERT INTO fressko_product (idcategory, product, url, isKg, isPc, sum,weight, price, activated) VALUES (?,?,?,?,?,?,?,?,?)");
 define("QUERY_EDIT_PRODUCT", "UPDATE fressko_product SET idcategory=?, product=?, isKg=?, isPc=?, sum=?, weight=?, price=?, activated=? WHERE idproduct=?");
 define("QUERY_EDIT_PRODUCT_URL", "UPDATE fressko_product SET idcategory=?, product=?, url=?,  isKg=? ,isPc=?, sum=?, weight=?, price=?, activated=? WHERE idproduct=?");
@@ -89,8 +89,22 @@ where referido_id =fressko_user.iduser) as total_commissions
 define("QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID", "SELECT * from fressko_referred_commissions where order_id = ?");
 define("QUERY_INSERT_REFERRED_COMISSION", "INSERT INTO fressko_referred_commissions (order_id,referido_id,referenciado_id,commission,created_at,validity_at) values (?,?,?,?,?,?)");
 define("QUERY_UPDATE_REFERRED_COMISSION", "UPDATE fressko_referred_commissions set commission=?, created_at=?, validity_at=? where order_id=?");
-define("QUERY_SELECT_REFERRED_COMISSIONS_BY_USER_ID", "SELECT * from fressko_referred_commissions where referido_id = ?");
+define("QUERY_SELECT_REFERRED_COMISSIONS_BY_USER_ID", "SELECT * from fressko_referred_commissions where (referido_id = ? and 
+(validity_at is NULL  and active=1))
+or 
+(referido_id = ? and
+(validity_at>? and active=1 and validity_at is not NULL))");
+
+define("QUERY_SELECT_REFERRED_COMISSIONS", "SELECT frc.referido_id ,frc.validity_at,fu.name ,fu.telephone,frc.commission,frc.id as commission_id  from fressko_referred_commissions frc
+join fressko_user fu on fu.iduser = frc.referido_id 
+where 
+(validity_at is NULL  and active=1)
+or 
+(validity_at>? and active=1 and validity_at is not NULL)
+order by fu.iduser 
+");
 define("QUERY_SELECT_REFERREDS_BY_USER_ID", "SELECT count(id) as total from fressko_referidos where referido_id = ?");
+define("QUERY_UPDATE_APPLY_COMMISSION", "UPDATE fressko_referred_commissions set active=0 where id=?");
 
 
 // $dbConnection = new PDO('mysql:host=198.71.235.14;dbname=fressko', 'rbedev', '651_LCD_573_1850_933_e@rbe');

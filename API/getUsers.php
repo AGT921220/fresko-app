@@ -28,6 +28,8 @@ if(isset($_POST["token"]) && $_POST["token"]==TOKEN){
     $user["colony"] = $resultUser["colony"];
     $user["reference"] = $resultUser["reference"];
     $user["activated"] = $resultUser["activated"];
+    $user["is_promotor"] = $resultUser["is_promotor"];
+
     array_push($response["users"], $user);
   }
   $response["success"] = 1;

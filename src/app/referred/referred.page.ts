@@ -153,20 +153,19 @@ export class ReferredPage {
         let commissions = []
         let total = 0
         this.referreds = response.referreds.total
+        this.referredCommissions = 0
+
         if (response.commissions.length >= 1) {
           let commisionsResponse: any[]  = response.commissions
           Object.entries(commisionsResponse).forEach(([key, value]) => {
             commissions.push(value)
-            console.log(value)
             total = total + parseFloat(value.commission)
           });
 
           this.referredCommissions = commissions
-
         }
 
         this.balance = total
-        console.log(total)
       });
 
   }
