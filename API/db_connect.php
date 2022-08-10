@@ -89,7 +89,9 @@ where referido_id =fressko_user.iduser) as total_commissions
 define("QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID", "SELECT * from fressko_referred_commissions where order_id = ?");
 define("QUERY_INSERT_REFERRED_COMISSION", "INSERT INTO fressko_referred_commissions (order_id,referido_id,referenciado_id,commission,created_at,validity_at) values (?,?,?,?,?,?)");
 define("QUERY_UPDATE_REFERRED_COMISSION", "UPDATE fressko_referred_commissions set commission=?, created_at=?, validity_at=? where order_id=?");
-define("QUERY_SELECT_REFERRED_COMISSIONS_BY_USER_ID", "SELECT * from fressko_referred_commissions where (referido_id = ? and 
+define("QUERY_SELECT_REFERRED_COMISSIONS_BY_USER_ID", "SELECT fressko_referred_commissions.*, fressko_user.name from fressko_referred_commissions
+join fressko_user on fressko_referred_commissions.referenciado_id=fressko_user.iduser
+ where (referido_id = ? and 
 (validity_at is NULL  and active=1))
 or 
 (referido_id = ? and

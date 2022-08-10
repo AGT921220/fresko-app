@@ -5,14 +5,14 @@
 
       <ion-tab-button (click)="carrito()" *ngIf="this.global.esInvitado == false">
         <ion-icon name="cart-outline" style="color:white;"></ion-icon>
-        <span style="font-size: 1.3vh;font-weight: 480;color: white;">CARRITO</span>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">VER CARRITO</span>
         <!-- <img class="custom-cart" style="width: 6.4vh;margin-top: 10%;"/> -->
         <!-- <ion-icon color="light" name="cart-outline"></ion-icon> -->
       </ion-tab-button>
 
       <ion-tab-button (click)="pagar()" *ngIf="this.global.esInvitado == false">
         <ion-icon name="cash-outline"  style="color:white;"></ion-icon>
-        <span style="font-size: 1.3vh;font-weight: 480;color: white;">PAGAR</span>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">FINALIZAR</span>
       </ion-tab-button>
 
       <ion-tab-button (click)="openWhatsapp()">
@@ -22,7 +22,7 @@
 
       <ion-tab-button (click)="back()">
         <ion-icon name="arrow-back-outline" style="color:white;"></ion-icon>
-        <span style="font-size: 1.3vh;font-weight: 480;color: white;">ATRÁS</span>
+        <span style="font-size: 1.3vh;font-weight: 480;color: white;">AGREGAR MÁS</span>
       </ion-tab-button>
 
     </ion-tab-bar>

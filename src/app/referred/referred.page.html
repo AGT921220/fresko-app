@@ -1,3 +1,4 @@
+
 <ion-content>
   <ion-item class="header ion-text-center" style="padding-top:8%">
     <div class="first">
@@ -30,7 +31,7 @@
     padding: 0.5em;
     border-radius: 10px;
     font-weight: bold;
-    font-size: 1.5em;">${{balance}}</p>
+    font-size: 1.5em;">${{balance.toFixed(2)}}</p>
   </div>
 
 
@@ -41,14 +42,14 @@
         <th>#Orden</th>
         <th>Usuario</th>
         <th>Monto</th>
-        <th>Expiración</th>
+        <th>Fecha</th>
 
       </tr>
     </thead>
     <tbody style="justify-content: center; text-align: center;">
       <tr *ngFor="let item of referredCommissions" style="justify-content: center; text-align: center;">
-        <td> {{item.order_id}} </td>
-        <th> {{item.referenciado_id}} </th>
+        <td> {{(item.order_id!=0)?item.order_id:'N/A'}} </td>
+        <th> {{(item.referenciado_id!=0)?item.name:'N/A'}} </th>
         <th> ${{item.commission}} MXN</th>
         <th> {{(item.validity_at)?item.validity_at:'No Expira'}} </th>
       </tr>
