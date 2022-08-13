@@ -38,6 +38,10 @@ export class TabsPage implements OnInit {
   showRederred(){
     this.router.navigate(['/tabs/referred']);
   }
+  showHome(){
+    this.router.navigate(['/tabs/categories']);
+  }
+  
 
   openWhatsapp(){
     this.iab.create('http://api.whatsapp.com/send?phone=' + this.global.getAppConfigFlag("WHATSAPP"), "_system");

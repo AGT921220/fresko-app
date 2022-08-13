@@ -90,23 +90,33 @@ define("QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID", "SELECT * from fressko_ref
 define("QUERY_INSERT_REFERRED_COMISSION", "INSERT INTO fressko_referred_commissions (order_id,referido_id,referenciado_id,commission,created_at,validity_at) values (?,?,?,?,?,?)");
 define("QUERY_UPDATE_REFERRED_COMISSION", "UPDATE fressko_referred_commissions set commission=?, created_at=?, validity_at=? where order_id=?");
 define("QUERY_SELECT_REFERRED_COMISSIONS_BY_USER_ID", "SELECT fressko_referred_commissions.*, fressko_user.name from fressko_referred_commissions
-join fressko_user on fressko_referred_commissions.referenciado_id=fressko_user.iduser
+left join fressko_user on fressko_referred_commissions.referenciado_id=fressko_user.iduser
  where (referido_id = ? and 
 (validity_at is NULL  and active=1))
 or 
 (referido_id = ? and
 (validity_at>? and active=1 and validity_at is not NULL))");
 
-define("QUERY_SELECT_REFERRED_COMISSIONS", "SELECT frc.referido_id ,frc.validity_at,fu.name ,fu.telephone,frc.commission,frc.id as commission_id  from fressko_referred_commissions frc
-join fressko_user fu on fu.iduser = frc.referido_id 
+define("QUERY_SELECT_REFERRED_COMISSIONS", "SELECT 
+(Select name from fressko_user where iduser=referido_id) as name,
+(Select telephone  from fressko_user where iduser=referido_id) as telephone,
+sum(commission) as commission,
+referido_id,
+validity_at
+from fressko_referred_commissions frc
 where 
 (validity_at is NULL  and active=1)
 or 
 (validity_at>? and active=1 and validity_at is not NULL)
-order by fu.iduser 
+GROUP BY referido_id
 ");
 define("QUERY_SELECT_REFERREDS_BY_USER_ID", "SELECT count(id) as total from fressko_referidos where referido_id = ?");
-define("QUERY_UPDATE_APPLY_COMMISSION", "UPDATE fressko_referred_commissions set active=0 where id=?");
+define("QUERY_UPDATE_APPLY_COMMISSIONS_BY_USER_ID", "UPDATE fressko_referred_commissions set active=0 where referido_id=?");
+define("QUERY_INSERT_ADD_COMMISSION_BY_USER_ID", "Insert into fressko_referred_commissions
+(order_id,referido_id,referenciado_id,commission,active,validity_at)
+values(0,?,0,?,1,null)
+");
+
 
 
 // $dbConnection = new PDO('mysql:host=198.71.235.14;dbname=fressko', 'rbedev', '651_LCD_573_1850_933_e@rbe');
