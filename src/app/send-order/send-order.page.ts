@@ -41,11 +41,11 @@ export class SendOrderPage implements OnInit {
   ) { }
 
   ngOnInit() {
-  
+
     this.selectedRadioGroup = 'M';
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.costo_envio = parseFloat(this.global.getAppConfigFlag("COSTO_ENVIO"));
     console.log('Res', this.global.user_info);
     this.getSubtotal();
@@ -100,7 +100,7 @@ export class SendOrderPage implements OnInit {
     this.g.shoppingList = this.shoppingList;
     console.log('Shipping list', this.shoppingList);
   }
-  
+
   async updatePromoSeleccionada(item, index) {
     for (let i = 0; i < this.promotions_available.length; i++) {
       if (i != index) {
@@ -176,7 +176,7 @@ export class SendOrderPage implements OnInit {
     }
   }
 
-  getSubtotal() {
+  async getSubtotal() {
     this.subtotal = 0;
     for (let i = 0; i < this.g.fruits.length; i++) {
       if (parseFloat(this.g.fruits[i].kg) > 0 || parseInt(this.g.fruits[i].pc, 10) > 0) {
@@ -225,12 +225,13 @@ export class SendOrderPage implements OnInit {
         this.total -= descuento;
       }
     }
+    await this.getCommissions(this.global.user_info.iduser)
   }
 
   back() {
-    if(this.global.finish_order == "products"){
+    if (this.global.finish_order == "products") {
       this.router.navigate(['/finish-order']);
-    }else{
+    } else {
       this.router.navigate(['/tabs2/products/' + this.global.id_category]);
     }
   }
@@ -259,4 +260,23 @@ export class SendOrderPage implements OnInit {
     this.router.navigate(['horario-entrega'], navigationExtras)
   }
 
+  async getCommissions(user_id) {
+
+    this.apiService.getReferredCommissionsByUserId(user_id)
+      .subscribe((response: any) => {
+        if (response.commissions.length >= 1) {
+          let total = 0
+
+          let commisionsResponse: any[] = response.commissions
+          Object.entries(commisionsResponse).forEach(([key, value]) => {
+            console.log(value.commission)
+            total = total + parseFloat(value.commission)
+          });
+          this.total =this.total-total
+        }
+
+      });
+
+      
+  }
 }

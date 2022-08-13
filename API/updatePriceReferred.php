@@ -104,18 +104,26 @@ function addCommission($orderId, $userId, $referredId, $price, $isPromotor, $dbC
 {
 
   $commission = getCommission($price, REFERRED_COMISSION_PERCENTAJE);
-  $createdAt = date('Y-m-d H:i:s');
-  $validityAt = ($isPromotor==1) ? null : date('Y-m-d H:i:s', strtotime($createdAt . ' + 15 days'));
+  $commissionSecondLeven = getCommission($price, REFERRED_COMISSION_PERCENTAJE_SECOND_LEVEL);
 
-  $existCommission = checkCommission($orderId, $dbConnection);
+  $createdAt = date('Y-m-d H:i:s');
+  $validityAt = ($isPromotor == 1) ? null : date('Y-m-d H:i:s', strtotime($createdAt . ' + 21 days'));
+
+  $existCommission = checkCommission($orderId, $referredId, $dbConnection);
+
+
+  secondLevelReferred($dbConnection, $orderId, intval($referredId), intval($userId), $createdAt, $validityAt, $commissionSecondLeven);
+
+
   if (count($existCommission) <= 0) {
     $stmt = $dbConnection->prepare(QUERY_INSERT_REFERRED_COMISSION);
-    $stmt->execute([intval($orderId), intval($referredId), intval($userId), $commission, $createdAt, $validityAt]);
+    $stmt->execute([intval($orderId), intval($referredId), intval($userId), $commission, $createdAt, $validityAt, REFERRED_PERCENTAJE]);
+
     return;
   }
 
   $stmt = $dbConnection->prepare(QUERY_UPDATE_REFERRED_COMISSION);
-  $stmt->execute([$commission, $createdAt, $validityAt, $orderId]);
+  $stmt->execute([$commission, $createdAt, $validityAt, $orderId, $referredId]);
 }
 
 function getCommission($price, $percentaje)
@@ -123,10 +131,39 @@ function getCommission($price, $percentaje)
   return $price * $percentaje;
 }
 
-function checkCommission($orderId, $dbConnection)
+function checkCommission($orderId, $referredId, $dbConnection)
 {
   $stmt = $dbConnection->prepare(QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID);
-  $stmt->execute([intval($orderId)]);
+  $stmt->execute([intval($orderId), intval($referredId)]);
   $result =  $stmt->fetchAll();
   return $result;
 }
+function secondLevelReferred($dbConnection, $orderId, $referredId, $userId, $createdAt, $validityAt, $commission)
+{
+
+  $stmt = $dbConnection->prepare(QUERY_SELECT_REFERRED_HAVE_SECOND_LEVEL);
+  $stmt->execute([intval($referredId)]);
+  $result =  $stmt->fetchAll();
+
+  if (count($result) <= 0) {
+    return;
+  }
+
+  $referredIdSecondLevel = $result[0];
+
+  $existCommission = checkCommission($orderId, $referredId, $dbConnection);
+
+  if (count($existCommission) <= 0) {
+    $stmt = $dbConnection->prepare(QUERY_INSERT_REFERRED_COMISSION);
+    $stmt->execute([intval($orderId), intval($referredIdSecondLevel['referido_id']), intval($referredId), $commission, $createdAt, $validityAt, REFERRED_PERCENTAJE_SECOND_LEVEL]);
+
+    return;
+  }
+
+  $stmt = $dbConnection->prepare(QUERY_UPDATE_REFERRED_COMISSION);
+  $stmt->execute([$commission, $createdAt, $validityAt, $orderId, $referredIdSecondLevel['referido_id']]);
+}
+
+
+
+

@@ -29,6 +29,8 @@ if(isset($_POST["token"])
     $orderToAdd["subtotal"] = $order["subtotal"];
     $orderToAdd["tipo_pago"] = $order["tipo_pago"];
     $orderToAdd["pagado"] = $order["pagado"];
+    $orderToAdd["total_commissions"] = $order["total_commissions"];
+
     if($orderToAdd["tipo_pago"] == null){
 	if($order["pickup"] == "0"){
 		$orderToAdd["pickup"] = "Horario matutino";

@@ -10,7 +10,12 @@ if ($method == "OPTIONS") {
     header("HTTP/1.1 200 OK");
     die();
 }
-define('REFERRED_COMISSION_PERCENTAJE', 0.05);
+define('REFERRED_PERCENTAJE', 0.05);
+define('REFERRED_PERCENTAJE_SECOND_LEVEL', 0.02);
+
+define('REFERRED_COMISSION_PERCENTAJE', REFERRED_PERCENTAJE);
+define('REFERRED_COMISSION_PERCENTAJE_SECOND_LEVEL', REFERRED_PERCENTAJE_SECOND_LEVEL);
+
 define("QUERY_INSERT_USER", "INSERT INTO fressko_user (name, email, telephone, password, street, streetnumber, interior, colony, reference, activated) VALUES (?,?,?,?,?,?,?,?,?,?)");
 define("QUERY_LOGIN", "SELECT iduser,password, activated FROM fressko_user WHERE telephone=?");
 define("QUERY_SELECT_PRODUCTS", "SELECT * FROM fressko_product WHERE idcategory=?");
@@ -28,7 +33,8 @@ define("QUERY_EDIT_PRODUCT_URL", "UPDATE fressko_product SET idcategory=?, produ
 define("QUERY_NOTIFICATIONS", "SELECT fressko_order.idorder, fressko_user.name FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser");
 define("QUERY_SELECT_ORDERS", "SELECT fressko_order.*, fressko_user.name,fressko_user.street,fressko_user.streetnumber,fressko_user.colony,fressko_user.telephone FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser ORDER BY fressko_order.idorder DESC");
 define("QUERY_SELECT_CONTENT_ORDER", "SELECT fressko_order_content.*, fressko_product.product FROM fressko_order_content JOIN fressko_product ON fressko_product.idproduct=fressko_order_content.idproduct WHERE fressko_order_content.idorder=?");
-define("QUERY_SELECT_ORDERS_BY_DATE", "SELECT fressko_order.*, fressko_user.name,fressko_user.street,fressko_user.streetnumber,fressko_user.colony,fressko_user.telephone FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser WHERE timestamp>? AND timestamp<=? ORDER BY fressko_order.idorder DESC");
+define("QUERY_SELECT_ORDERS_BY_DATE", "SELECT fressko_order.*,(Select sum(commission) from fressko_referred_commissions
+where referido_id =fressko_user.iduser) as total_commissions, fressko_user.name,fressko_user.street,fressko_user.streetnumber,fressko_user.colony,fressko_user.telephone FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser WHERE timestamp>? AND timestamp<=? ORDER BY fressko_order.idorder DESC");
 define("QUERY_SELECT_ORDERS_USER", "SELECT fressko_order.*, fressko_user.name,fressko_user.street,fressko_user.streetnumber,fressko_user.colony,fressko_user.telephone FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser WHERE fressko_order.iduser=? ORDER BY fressko_order.idorder DESC");
 define("QUERY_SELECT_CATEGORIES", "SELECT * FROM fressko_categories where active = 1");
 define("QUERY_VERIFICAR_COBERTURA", "SELECT * FROM fressko_cobertura where activo = 1 AND codigo_postal = ?");
@@ -86,9 +92,9 @@ define("QUERY_SELECT_REFERRED_ORDERS_BY_DATE", "SELECT fressko_order.*, fressko_
 (Select sum(commission) from fressko_referred_commissions
 where referido_id =fressko_user.iduser) as total_commissions
   FROM fressko_order JOIN fressko_user ON fressko_user.iduser=fressko_order.iduser JOIN fressko_referidos fr ON fr.referenciado_id  =fressko_order.iduser JOIN fressko_user fu_reff ON fu_reff.iduser = fr .referido_id WHERE timestamp>? AND timestamp<=?  ORDER BY fressko_order.idorder DESC");
-define("QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID", "SELECT * from fressko_referred_commissions where order_id = ?");
-define("QUERY_INSERT_REFERRED_COMISSION", "INSERT INTO fressko_referred_commissions (order_id,referido_id,referenciado_id,commission,created_at,validity_at) values (?,?,?,?,?,?)");
-define("QUERY_UPDATE_REFERRED_COMISSION", "UPDATE fressko_referred_commissions set commission=?, created_at=?, validity_at=? where order_id=?");
+define("QUERY_SELECT_REFERRED_COMISSION_BY_ORDER_ID", "SELECT * from fressko_referred_commissions where order_id = ? and referido_id=?");
+define("QUERY_INSERT_REFERRED_COMISSION", "INSERT INTO fressko_referred_commissions (order_id,referido_id,referenciado_id,commission,created_at,validity_at, commission_percentaje) values (?,?,?,?,?,?,?)");
+define("QUERY_UPDATE_REFERRED_COMISSION", "UPDATE fressko_referred_commissions set commission=?, created_at=?, validity_at=? where order_id=? and referido_id=?");
 define("QUERY_SELECT_REFERRED_COMISSIONS_BY_USER_ID", "SELECT fressko_referred_commissions.*, fressko_user.name from fressko_referred_commissions
 left join fressko_user on fressko_referred_commissions.referenciado_id=fressko_user.iduser
  where (referido_id = ? and 
@@ -116,6 +122,7 @@ define("QUERY_INSERT_ADD_COMMISSION_BY_USER_ID", "Insert into fressko_referred_c
 (order_id,referido_id,referenciado_id,commission,active,validity_at)
 values(0,?,0,?,1,null)
 ");
+define("QUERY_SELECT_REFERRED_HAVE_SECOND_LEVEL", "SELECT * from fressko_referidos where referenciado_id = ?");
 
 
 
