@@ -24,8 +24,10 @@ export class SendOrderPage implements OnInit {
   promotions_available = [];
   subtotal = 0;
   total = 0;
+  minimum_applicable_commissions = 250;
   promo_seleccionada = null;
   costo_envio = 45.00;
+  commissions = 0;
   tipo = "send-order";
   shoppingList = [];
   totalCost = 0;
@@ -225,7 +227,10 @@ export class SendOrderPage implements OnInit {
         this.total -= descuento;
       }
     }
-    await this.getCommissions(this.global.user_info.iduser)
+    if(this.total>this.minimum_applicable_commissions)
+    {
+      await this.getCommissions(this.global.user_info.iduser)
+    }
   }
 
   back() {
@@ -266,17 +271,16 @@ export class SendOrderPage implements OnInit {
       .subscribe((response: any) => {
         if (response.commissions.length >= 1) {
           let total = 0
-
           let commisionsResponse: any[] = response.commissions
           Object.entries(commisionsResponse).forEach(([key, value]) => {
-            console.log(value.commission)
             total = total + parseFloat(value.commission)
           });
-          this.total =this.total-total
+          this.commissions = total
+          this.total = this.total - total
         }
 
       });
 
-      
+
   }
 }

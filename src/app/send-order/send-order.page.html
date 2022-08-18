@@ -60,9 +60,21 @@
           <span style="color:black;font-weight: bold;">Descuento: </span>
         </ion-col>
         <ion-col size="3">
-          <span style="color:black;font-weight: bold;">{{ promo_seleccionada.descuento_otorgado | currency }}</span>
+          <span style="color:black;font-weight: bold; color:red !important;">- {{ promo_seleccionada.descuento_otorgado | currency }}</span>
         </ion-col>
       </ion-row>
+
+      <ion-row *ngIf="commissions!=0">
+        <ion-col size="1"></ion-col>
+        <ion-col size="8">
+          <span style="color:black;font-weight: bold; color:red !important;">Comisiones: </span>
+        </ion-col>
+        <ion-col size="3">
+          <span style="color:black;font-weight: bold; color:red !important;">- {{ commissions | currency }}</span>
+        </ion-col>
+      </ion-row>
+      
+
     </ion-grid>
   </div>
 

@@ -151,6 +151,10 @@ function secondLevelReferred($dbConnection, $orderId, $referredId, $userId, $cre
 
   $referredIdSecondLevel = $result[0];
 
+  if (!isPromotor($dbConnection, $referredIdSecondLevel['referido_id'])) {
+    return;
+  }
+
   $existCommission = checkCommission($orderId, $referredId, $dbConnection);
 
   if (count($existCommission) <= 0) {
@@ -163,7 +167,11 @@ function secondLevelReferred($dbConnection, $orderId, $referredId, $userId, $cre
   $stmt = $dbConnection->prepare(QUERY_UPDATE_REFERRED_COMISSION);
   $stmt->execute([$commission, $createdAt, $validityAt, $orderId, $referredIdSecondLevel['referido_id']]);
 }
+function isPromotor($dbConnection, $userId): bool
+{
 
-
-
-
+  $stmt = $dbConnection->prepare(QUERY_SELECT_USER_BY_ID);
+  $stmt->execute([intval($userId)]);
+  $result =  $stmt->fetchAll();
+  return $result[0]['is_promotor'];
+}

@@ -8,10 +8,8 @@ COMPILAR
 
 ionic cordova platform add android --save 
 ionic integrations enable cordova --add
-ionic cordova build android 
-
-
 cordova requirements android --verbose
+ionic cordova build android 
 
 
 

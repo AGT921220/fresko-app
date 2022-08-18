@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n\r\n  <ion-toolbar mode=\"ios\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-button class=\"custom-button\" (click)=\"back()\"\r\n        style=\"color: white !important;text-transform: capitalize !important;\">\r\n        <ion-icon style=\"color: white !important;text-transform: capitalize !important;\" name=\"chevron-back-outline\">\r\n        </ion-icon>\r\n        <span style=\"color: white !important;font-weight: bold;\">VOLVER</span>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-img src=\"assets/zanahoria_blanca.png\"\r\n      style=\"width:6%;float:right;padding-top:0px!important;margin-top:0px!important\"\r\n      class=\"img_header ion-margin-top ion-padding-top\"></ion-img>\r\n\r\n  </ion-toolbar>\r\n\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <div class=\"body-button\" style=\"text-align: center;margin-top:7%\">\r\n    <ion-img src=\"assets/mi_carrito.png\" (click)=\"carrito()\"\r\n      style=\"width:20vh;padding-top:0px!important;margin-top:0px!important\"\r\n      class=\"img_header ion-margin-top ion-padding-top\"></ion-img>\r\n  </div>\r\n  <div class=\"totales\" style=\"margin-top:3%\">\r\n    <ion-grid>\r\n      <ion-row>\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;\">Subtotal de la compra: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">{{subtotal | currency}}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row *ngIf=\"promo_seleccionada == null || promo_seleccionada?.tipo != 'ENVIO'\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;\">Tarifa de entrega: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">{{costo_envio | currency }}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row *ngIf=\"promo_seleccionada != null && promo_seleccionada.tipo == 'ENVIO'\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;text-decoration-line: line-through;\">Tarifa de entrega: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">$0.00</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row *ngIf=\"promo_seleccionada != null && promo_seleccionada.tipo == 'DESCUENTO'\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;\">Descuento: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">{{ promo_seleccionada.descuento_otorgado | currency }}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n    </ion-grid>\r\n  </div>\r\n\r\n\r\n  <div>\r\n    <ion-row>\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"10\">\r\n        <textarea [(ngModel)]=\"pickUpNotes\" placeholder=\"AGREGA AQUI TUS COMENTARIOS SOBRE TU PEDIDO\" rows=\"6\"\r\n          style=\"text-align:center;border: 2px solid #dbdbdb;border-radius: 18px;width: 100% !important;height: 100% !important;background-color: #dbdbdb;color: black;font-weight: 300;\">\r\n        </textarea>\r\n      </ion-col>\r\n      <ion-col size=\"1\"></ion-col>\r\n    </ion-row>\r\n  </div>\r\n\r\n\r\n  <div *ngIf=\"promotions_available.length >= 1\" style=\"margin-top:3%\">\r\n    <ion-row>\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color:#ec760a;height:2px;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row *ngFor=\"let item of promotions_available; let i = index\">\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"11\" *ngIf=\"item.permitida\">\r\n        <ion-row>\r\n          <ion-col size=\"10\">\r\n            <span style=\"font-weight: bold;font-size: 15px;\">{{item.description}}\r\n            </span>\r\n          </ion-col>\r\n          <ion-col size=\"2\">\r\n            <ion-checkbox (click)=\"updatePromoSeleccionada(item, i)\" [checked]=\"item.seleccionada\"></ion-checkbox>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-col>\r\n      <ion-col size=\"11\" *ngIf=\"!item.permitida\">\r\n        <ion-row>\r\n          <ion-col size=\"10\" *ngIf=\"item.tipo == 'DESCUENTO'\">\r\n            <span style=\"text-decoration-line: line-through;font-weight: bold;font-size: 15px;\">{{item.description}}\r\n            </span><br />\r\n            <span style=\"font-style: italic;font-size:13px;\">Necesitas {{item.diferencia | currency }} en tu carrito\r\n              para poder seleccionar esta promocion.\r\n            </span>\r\n          </ion-col>\r\n          <ion-col size=\"10\" *ngIf=\"item.tipo != 'DESCUENTO'\">\r\n            <span style=\"text-decoration-line: line-through;font-weight: bold;font-size: 15px;\">{{item.description}}\r\n            </span>\r\n          </ion-col>\r\n          <ion-col size=\"2\">\r\n            <ion-checkbox disabled></ion-checkbox>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color:#ec760a;height:2px;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n  </div>\r\n  <div class=\"total\">\r\n    <ion-row>\r\n      <ion-col size=\"3\"></ion-col>\r\n      <ion-col size=\"6\" style=\"text-align: center;\">\r\n        <span style=\"color:black;font-weight: bold;font-size: 17px;color:#ec760a\">Total Aproximado: {{total | currency }}</span>\r\n      </ion-col>\r\n      <ion-col size=\"3\">\r\n      </ion-col>\r\n    </ion-row>\r\n  </div>\r\n  <div class=\"body-button\" style=\"text-align: center;margin-top:5%;margin-bottom:4%\">\r\n    <ion-row>\r\n      <ion-col size=\"3\"></ion-col>\r\n      <ion-col size=\"6\" style=\"text-align: center;\">\r\n        <button type=\"button\" class=\"buscar-btn\" style=\"width: 100%\" (click)=\"elegirHorario()\">CONTINUAR</button>\r\n      </ion-col>\r\n      <ion-col size=\"3\"></ion-col>\r\n    </ion-row>\r\n  </div>\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n\r\n  <ion-toolbar mode=\"ios\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-button class=\"custom-button\" (click)=\"back()\"\r\n        style=\"color: white !important;text-transform: capitalize !important;\">\r\n        <ion-icon style=\"color: white !important;text-transform: capitalize !important;\" name=\"chevron-back-outline\">\r\n        </ion-icon>\r\n        <span style=\"color: white !important;font-weight: bold;\">VOLVER</span>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    <ion-img src=\"assets/zanahoria_blanca.png\"\r\n      style=\"width:6%;float:right;padding-top:0px!important;margin-top:0px!important\"\r\n      class=\"img_header ion-margin-top ion-padding-top\"></ion-img>\r\n\r\n  </ion-toolbar>\r\n\r\n\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <div class=\"body-button\" style=\"text-align: center;margin-top:7%\">\r\n    <ion-img src=\"assets/mi_carrito.png\" (click)=\"carrito()\"\r\n      style=\"width:20vh;padding-top:0px!important;margin-top:0px!important\"\r\n      class=\"img_header ion-margin-top ion-padding-top\"></ion-img>\r\n  </div>\r\n  <div class=\"totales\" style=\"margin-top:3%\">\r\n    <ion-grid>\r\n      <ion-row>\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;\">Subtotal de la compra: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">{{subtotal | currency}}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row *ngIf=\"promo_seleccionada == null || promo_seleccionada?.tipo != 'ENVIO'\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;\">Tarifa de entrega: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">{{costo_envio | currency }}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row *ngIf=\"promo_seleccionada != null && promo_seleccionada.tipo == 'ENVIO'\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;text-decoration-line: line-through;\">Tarifa de entrega: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold;\">$0.00</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row *ngIf=\"promo_seleccionada != null && promo_seleccionada.tipo == 'DESCUENTO'\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold;\">Descuento: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold; color:red !important;\">- {{ promo_seleccionada.descuento_otorgado | currency }}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n      <ion-row *ngIf=\"commissions!=0\">\r\n        <ion-col size=\"1\"></ion-col>\r\n        <ion-col size=\"8\">\r\n          <span style=\"color:black;font-weight: bold; color:red !important;\">Comisiones: </span>\r\n        </ion-col>\r\n        <ion-col size=\"3\">\r\n          <span style=\"color:black;font-weight: bold; color:red !important;\">- {{ commissions | currency }}</span>\r\n        </ion-col>\r\n      </ion-row>\r\n      \r\n\r\n    </ion-grid>\r\n  </div>\r\n\r\n\r\n  <div>\r\n    <ion-row>\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"10\">\r\n        <textarea [(ngModel)]=\"pickUpNotes\" placeholder=\"AGREGA AQUI TUS COMENTARIOS SOBRE TU PEDIDO\" rows=\"6\"\r\n          style=\"text-align:center;border: 2px solid #dbdbdb;border-radius: 18px;width: 100% !important;height: 100% !important;background-color: #dbdbdb;color: black;font-weight: 300;\">\r\n        </textarea>\r\n      </ion-col>\r\n      <ion-col size=\"1\"></ion-col>\r\n    </ion-row>\r\n  </div>\r\n\r\n\r\n  <div *ngIf=\"promotions_available.length >= 1\" style=\"margin-top:3%\">\r\n    <ion-row>\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color:#ec760a;height:2px;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row *ngFor=\"let item of promotions_available; let i = index\">\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"11\" *ngIf=\"item.permitida\">\r\n        <ion-row>\r\n          <ion-col size=\"10\">\r\n            <span style=\"font-weight: bold;font-size: 15px;\">{{item.description}}\r\n            </span>\r\n          </ion-col>\r\n          <ion-col size=\"2\">\r\n            <ion-checkbox (click)=\"updatePromoSeleccionada(item, i)\" [checked]=\"item.seleccionada\"></ion-checkbox>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-col>\r\n      <ion-col size=\"11\" *ngIf=\"!item.permitida\">\r\n        <ion-row>\r\n          <ion-col size=\"10\" *ngIf=\"item.tipo == 'DESCUENTO'\">\r\n            <span style=\"text-decoration-line: line-through;font-weight: bold;font-size: 15px;\">{{item.description}}\r\n            </span><br />\r\n            <span style=\"font-style: italic;font-size:13px;\">Necesitas {{item.diferencia | currency }} en tu carrito\r\n              para poder seleccionar esta promocion.\r\n            </span>\r\n          </ion-col>\r\n          <ion-col size=\"10\" *ngIf=\"item.tipo != 'DESCUENTO'\">\r\n            <span style=\"text-decoration-line: line-through;font-weight: bold;font-size: 15px;\">{{item.description}}\r\n            </span>\r\n          </ion-col>\r\n          <ion-col size=\"2\">\r\n            <ion-checkbox disabled></ion-checkbox>\r\n          </ion-col>\r\n        </ion-row>\r\n      </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row>\r\n      <ion-col size=\"1\"></ion-col>\r\n      <ion-col size=\"10\">\r\n        <hr style=\"background-color:#ec760a;height:2px;\" />\r\n      </ion-col>\r\n    </ion-row>\r\n  </div>\r\n  <div class=\"total\">\r\n    <ion-row>\r\n      <ion-col size=\"3\"></ion-col>\r\n      <ion-col size=\"6\" style=\"text-align: center;\">\r\n        <span style=\"color:black;font-weight: bold;font-size: 17px;color:#ec760a\">Total Aproximado: {{total | currency }}</span>\r\n      </ion-col>\r\n      <ion-col size=\"3\">\r\n      </ion-col>\r\n    </ion-row>\r\n  </div>\r\n  <div class=\"body-button\" style=\"text-align: center;margin-top:5%;margin-bottom:4%\">\r\n    <ion-row>\r\n      <ion-col size=\"3\"></ion-col>\r\n      <ion-col size=\"6\" style=\"text-align: center;\">\r\n        <button type=\"button\" class=\"buscar-btn\" style=\"width: 100%\" (click)=\"elegirHorario()\">CONTINUAR</button>\r\n      </ion-col>\r\n      <ion-col size=\"3\"></ion-col>\r\n    </ion-row>\r\n  </div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -146,8 +146,10 @@ let SendOrderPage = class SendOrderPage {
         this.promotions_available = [];
         this.subtotal = 0;
         this.total = 0;
+        this.minimum_applicable_commissions = 250;
         this.promo_seleccionada = null;
         this.costo_envio = 45.00;
+        this.commissions = 0;
         this.tipo = "send-order";
         this.shoppingList = [];
         this.totalCost = 0;
@@ -284,51 +286,56 @@ let SendOrderPage = class SendOrderPage {
         }
     }
     getSubtotal() {
-        this.subtotal = 0;
-        for (let i = 0; i < this.g.fruits.length; i++) {
-            if (parseFloat(this.g.fruits[i].kg) > 0 || parseInt(this.g.fruits[i].pc, 10) > 0) {
-                this.subtotal += (this.g.fruits[i].selectedWeight / 1000) * this.g.fruits[i].price;
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.subtotal = 0;
+            for (let i = 0; i < this.g.fruits.length; i++) {
+                if (parseFloat(this.g.fruits[i].kg) > 0 || parseInt(this.g.fruits[i].pc, 10) > 0) {
+                    this.subtotal += (this.g.fruits[i].selectedWeight / 1000) * this.g.fruits[i].price;
+                }
             }
-        }
-        for (let i = 0; i < this.g.vegetables.length; i++) {
-            if (parseFloat(this.g.vegetables[i].kg) > 0 || parseInt(this.g.vegetables[i].pc, 10) > 0) {
-                this.subtotal += (this.g.vegetables[i].selectedWeight / 1000) * this.g.vegetables[i].price;
+            for (let i = 0; i < this.g.vegetables.length; i++) {
+                if (parseFloat(this.g.vegetables[i].kg) > 0 || parseInt(this.g.vegetables[i].pc, 10) > 0) {
+                    this.subtotal += (this.g.vegetables[i].selectedWeight / 1000) * this.g.vegetables[i].price;
+                }
             }
-        }
-        for (let i = 0; i < this.g.spices.length; i++) {
-            if (parseFloat(this.g.spices[i].kg) > 0 || parseInt(this.g.spices[i].pc, 10) > 0) {
-                this.subtotal += (this.g.spices[i].selectedWeight / 1000) * this.g.spices[i].price;
+            for (let i = 0; i < this.g.spices.length; i++) {
+                if (parseFloat(this.g.spices[i].kg) > 0 || parseInt(this.g.spices[i].pc, 10) > 0) {
+                    this.subtotal += (this.g.spices[i].selectedWeight / 1000) * this.g.spices[i].price;
+                }
             }
-        }
-        for (let i = 0; i < this.g.carnes.length; i++) {
-            if (parseFloat(this.g.carnes[i].kg) > 0 || parseInt(this.g.carnes[i].pc, 10) > 0) {
-                this.subtotal += (this.g.carnes[i].selectedWeight / 1000) * this.g.carnes[i].price;
+            for (let i = 0; i < this.g.carnes.length; i++) {
+                if (parseFloat(this.g.carnes[i].kg) > 0 || parseInt(this.g.carnes[i].pc, 10) > 0) {
+                    this.subtotal += (this.g.carnes[i].selectedWeight / 1000) * this.g.carnes[i].price;
+                }
             }
-        }
-        for (let i = 0; i < this.g.cremeria.length; i++) {
-            if (parseFloat(this.g.cremeria[i].kg) > 0 || parseInt(this.g.cremeria[i].pc, 10) > 0) {
-                this.subtotal += (this.g.cremeria[i].selectedWeight / 1000) * this.g.cremeria[i].price;
+            for (let i = 0; i < this.g.cremeria.length; i++) {
+                if (parseFloat(this.g.cremeria[i].kg) > 0 || parseInt(this.g.cremeria[i].pc, 10) > 0) {
+                    this.subtotal += (this.g.cremeria[i].selectedWeight / 1000) * this.g.cremeria[i].price;
+                }
             }
-        }
-        for (let i = 0; i < this.g.otros.length; i++) {
-            if (parseFloat(this.g.otros[i].kg) > 0 || parseInt(this.g.otros[i].pc, 10) > 0) {
-                this.subtotal += (this.g.otros[i].selectedWeight / 1000) * this.g.otros[i].price;
+            for (let i = 0; i < this.g.otros.length; i++) {
+                if (parseFloat(this.g.otros[i].kg) > 0 || parseInt(this.g.otros[i].pc, 10) > 0) {
+                    this.subtotal += (this.g.otros[i].selectedWeight / 1000) * this.g.otros[i].price;
+                }
             }
-        }
-        console.log('Subtotal', this.subtotal);
-        this.total = 0;
-        this.total = this.subtotal;
-        this.total += this.costo_envio;
-        if (this.promo_seleccionada != null) {
-            if (this.promo_seleccionada.tipo == 'ENVIO') {
-                this.total -= this.costo_envio;
+            console.log('Subtotal', this.subtotal);
+            this.total = 0;
+            this.total = this.subtotal;
+            this.total += this.costo_envio;
+            if (this.promo_seleccionada != null) {
+                if (this.promo_seleccionada.tipo == 'ENVIO') {
+                    this.total -= this.costo_envio;
+                }
+                else if (this.promo_seleccionada.tipo == 'DESCUENTO') {
+                    let descuento = this.subtotal * parseFloat("0." + this.promo_seleccionada.discount_price);
+                    this.promo_seleccionada.descuento_otorgado = descuento;
+                    this.total -= descuento;
+                }
             }
-            else if (this.promo_seleccionada.tipo == 'DESCUENTO') {
-                let descuento = this.subtotal * parseFloat("0." + this.promo_seleccionada.discount_price);
-                this.promo_seleccionada.descuento_otorgado = descuento;
-                this.total -= descuento;
+            if (this.total > this.minimum_applicable_commissions) {
+                yield this.getCommissions(this.global.user_info.iduser);
             }
-        }
+        });
     }
     back() {
         if (this.global.finish_order == "products") {
@@ -361,6 +368,22 @@ let SendOrderPage = class SendOrderPage {
                 state: obj
             };
             this.router.navigate(['horario-entrega'], navigationExtras);
+        });
+    }
+    getCommissions(user_id) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.apiService.getReferredCommissionsByUserId(user_id)
+                .subscribe((response) => {
+                if (response.commissions.length >= 1) {
+                    let total = 0;
+                    let commisionsResponse = response.commissions;
+                    Object.entries(commisionsResponse).forEach(([key, value]) => {
+                        total = total + parseFloat(value.commission);
+                    });
+                    this.commissions = total;
+                    this.total = this.total - total;
+                }
+            });
         });
     }
 };
