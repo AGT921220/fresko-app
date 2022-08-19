@@ -18,7 +18,7 @@ if (isset($_POST["idcategory"])) {
       	$productToAdd["idproduct"] = $product["idproduct"];
       	$productToAdd["idcategory"] = $product["idcategory"];
      	$productToAdd["product"] = utf8_encode($product["product"]);
-      	$productToAdd["url"] = "http://mercasa.mx//API/IMG/".$product["url"];
+      	$productToAdd["url"] = "https://mercasa.mx/API/IMG/".$product["url"];
 		$productToAdd["kg"] = "0";
       	$productToAdd["pc"] = "0";
       	$productToAdd["isKg"] = $product["isKg"];
@@ -69,7 +69,7 @@ function getSubmenus($id_category, $dbConnection){
       	$productToAdd["idproduct"] = $product["idproduct"];
       	$productToAdd["idcategory"] = $product["idcategory"];
      	$productToAdd["product"] = utf8_encode($product["product"]);
-      	$productToAdd["url"] = "http://mercasa.mx//API/IMG/".$product["url"];
+      	$productToAdd["url"] = "https://mercasa.mx/API/IMG/".$product["url"];
 		$productToAdd["kg"] = "0";
       	$productToAdd["pc"] = "0";
       	$productToAdd["isKg"] = $product["isKg"];
