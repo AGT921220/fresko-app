@@ -15,3 +15,8 @@ ionic cordova build android
 
 java -version
 sudo update-alternatives --config javac
+
+
+
+***********keystore**********
+Password : Mercasa2022!
